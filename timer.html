@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Purple Buzz - Study Timer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <!-- Load Require CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font CSS -->
+    <link href="assets/css/boxicon.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Load Tempalte CSS -->
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <style>
+        .timer-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin-top: 30px;
+        }
+        #timer {
+            font-size: 72px;
+            font-weight: 300;
+            color: #6a56a5;
+            margin: 20px 0;
+        }
+        .timer-btn {
+            border-radius: 50px;
+            padding: 10px 25px;
+            margin: 0 5px;
+            font-weight: 600;
+        }
+        .timer-btn-primary {
+            background: #6a56a5;
+            border-color: #6a56a5;
+        }
+        .timer-btn-outline {
+            border: 2px solid #6a56a5;
+            color: #6a56a5;
+            background: transparent;
+        }
+        .mode-display {
+            font-size: 24px;
+            color: #6a56a5;
+            margin-bottom: 20px;
+        }
+        .settings-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        .task-list {
+            margin-top: 40px;
+        }
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .task-item.completed span {
+            text-decoration: line-through;
+            color: #aaa;
+        }
+        .task-actions {
+            margin-left: auto;
+        }
+        .task-actions button {
+            background: none;
+            border: none;
+            color: #6a56a5;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand h1" href="index.html">
+                <i class='bx bx-buildings bx-sm text-dark'></i>
+                <span class="text-dark h4">Purple</span> <span class="text-primary h4">Buzz</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="navbar-toggler-success">
+                <div class="flex-fill mx-xl-5 mb-2">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
+                        <li class="nav-item">
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="work.html">Work</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="pricing.html">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar align-self-center d-flex">
+                    <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover text-primary'></i></a>
+                    <a class="nav-link" href="#"><i class='bx bx-cog bx-sm text-primary'></i></a>
+                    <a class="nav-link" href="#"><i class='bx bx-user-circle bx-sm text-primary'></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Close Header -->
+
+
+    <!-- Start Timer Section -->
+    <section class="container py-5">
+        <div class="row">
+            <div class="col-md-8 mx-auto text-center">
+                <h1 class="h2 semi-bold-600">Focus Timer</h1>
+                <p class="light-300">
+                    Boost your productivity with our Pomodoro-style timer. Work in focused sprints with regular breaks.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="timer-container">
+                    <div class="mode-display" id="mode">Pomodoro Session</div>
+                    <div id="timer">25:00</div>
+                    <div class="text-center">
+                        <button id="startPause" class="timer-btn timer-btn-primary">Start</button>
+                        <button id="reset" class="timer-btn timer-btn-outline">Reset</button>
+                        <button id="skip" class="timer-btn timer-btn-outline">Skip</button>
+                    </div>
+                    <div class="text-center mt-3">
+                        <span class="badge bg-primary">Sessions Completed: <span id="sessions">0</span></span>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3 class="h5 semi-bold-600 text-center mb-4">Timer Settings</h3>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Work Duration (minutes)</label>
+                                <input type="number" id="workInput" class="form-control" value="25" min="1">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Break Duration (minutes)</label>
+                                <input type="number" id="breakInput" class="form-control" value="5" min="1">
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button id="apply" class="timer-btn timer-btn-primary">Apply Settings</button>
+                        </div>
+                    </div>
+
+                    <div class="task-list">
+                        <h3 class="h5 semi-bold-600 text-center mb-4">Task List</h3>
+                        <div class="input-group mb-3">
+                            <input type="text" id="taskInput" class="form-control" placeholder="Add a new task...">
+                            <button id="addTask" class="btn btn-primary">Add</button>
+                        </div>
+                        <div id="tasks"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Timer Section -->
+
+    <!-- Start Footer -->
+    <footer class="bg-secondary pt-4">
+        <div class="container">
+            <div class="row py-4">
+
+                <div class="col-lg-3 col-12 align-left">
+                    <a class="navbar-brand" href="index.html">
+                        <i class='bx bx-buildings bx-sm text-light'></i>
+                        <span class="text-light h5">Purple</span> <span class="text-light h5 semi-bold-600">Buzz</span>
+                    </a>
+                    <p class="text-light my-lg-4 my-2">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut.
+                    </p>
+                    <ul class="list-inline footer-icons light-300">
+                        <li class="list-inline-item m-0">
+                            <a class="text-light" target="_blank" href="http://facebook.com/">
+                                <i class='bx bxl-facebook-square bx-md'></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item m-0">
+                            <a class="text-light" target="_blank" href="https://www.linkedin.com/">
+                                <i class='bx bxl-linkedin-square bx-md'></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item m-0">
+                            <a class="text-light" target="_blank" href="https://www.whatsapp.com/">
+                                <i class='bx bxl-whatsapp-square bx-md'></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item m-0">
+                            <a class="text-light" target="_blank" href="https://www.flickr.com/">
+                                <i class='bx bxl-flickr-square bx-md'></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item m-0">
+                            <a class="text-light" target="_blank" href="https://www.medium.com/">
+                                <i class='bx bxl-medium-square bx-md' ></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
+                    <h3 class="h4 pb-lg-3 text-light light-300">Our Company</h2>
+                        <ul class="list-unstyled text-light light-300">
+                            <li class="pb-2">
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light" href="index.html">Home</a>
+                            </li>
+                            <li class="pb-2">
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="about.html">About Us</a>
+                            </li>
+                            <li class="pb-2">
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="work.html">Work</a>
+                            </li>
+                            <li class="pb-2">
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i></i><a class="text-decoration-none text-light py-1" href="pricing.html">Price</a>
+                            </li>
+                            <li class="pb-2">
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
+                    <h2 class="h4 pb-lg-3 text-light light-300">Our Works</h2>
+                    <ul class="list-unstyled text-light light-300">
+                        <li class="pb-2">
+                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Branding</a>
+                        </li>
+                        <li class="pb-2">
+                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Business</a>
+                        </li>
+                        <li class="pb-2">
+                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Marketing</a>
+                        </li>
+                        <li class="pb-2">
+                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Social Media</a>
+                        </li>
+                        <li class="pb-2">
+                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Digital Solution</a>
+                        </li>
+                        <li class="pb-2">
+                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Graphic</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
+                    <h2 class="h4 pb-lg-3 text-light light-300">For Client</h2>
+                    <ul class="list-unstyled text-light light-300">
+                        <li class="pb-2">
+                            <i class='bx-fw bx bx-phone bx-xs'></i><a class="text-decoration-none text-light py-1" href="tel:010-020-0340">010-020-0340</a>
+                        </li>
+                        <li class="pb-2">
+                            <i class='bx-fw bx bx-mail-send bx-xs'></i><a class="text-decoration-none text-light py-1" href="mailto:info@company.com">info@company.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="w-100 bg-primary py-3">
+            <div class="container">
+                <div class="row pt-2">
+                    <div class="col-lg-6 col-sm-12">
+                        <p class="text-lg-start text-center text-light light-300">
+                            © Copyright 2021 Purple Buzz Company. All Rights Reserved.
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                        <p class="text-lg-end text-center text-light light-300">
+                            Designed by <a rel="sponsored" class="text-decoration-none text-light" href="https://templatemo.com/" target="_blank"><strong>TemplateMo</strong></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Bootstrap -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <!-- Templatemo -->
+    <script src="assets/js/templatemo.js"></script>
+    <!-- Custom -->
+    <script src="assets/js/custom.js"></script>
+
+    <script>
+        // Timer functionality
+        let workDuration = 25 * 60;
+        let breakDuration = 5 * 60;
+        let secondsLeft = workDuration;
+        let isRunning = false;
+        let mode = "pomodoro"; // pomodoro or break
+        let timerInterval = null;
+        let completedSessions = 0;
+
+        function pad(num) {
+            return num.toString().padStart(2, "0");
+        }
+
+        function updateDisplay() {
+            const minutes = pad(Math.floor(secondsLeft / 60));
+            const seconds = pad(secondsLeft % 60);
+            document.getElementById("timer").textContent = `${minutes}:${seconds}`;
+            document.getElementById("mode").textContent = mode === "pomodoro" ? "Pomodoro Session" : "Break Time";
+            document.getElementById("sessions").textContent = completedSessions;
+        }
+
+        function startPause() {
+            if (!isRunning) {
+                isRunning = true;
+                document.getElementById("startPause").textContent = "Pause";
+                document.getElementById("startPause").classList.remove("timer-btn-primary");
+                document.getElementById("startPause").classList.add("timer-btn-outline");
+                timerInterval = setInterval(() => {
+                    if (secondsLeft > 0) {
+                        secondsLeft--;
+                        updateDisplay();
+                    } else {
+                        clearInterval(timerInterval);
+                        isRunning = false;
+                        document.getElementById("startPause").textContent = "Start";
+                        document.getElementById("startPause").classList.remove("timer-btn-outline");
+                        document.getElementById("startPause").classList.add("timer-btn-primary");
+                        if (mode === "pomodoro") completedSessions++;
+                        
+                        // Play sound when time is up
+                        const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3');
+                        audio.play();
+                        
+                        // Auto switch to next mode
+                        skipMode(true);
+                    }
+                }, 1000);
+            } else {
+                isRunning = false;
+                document.getElementById("startPause").textContent = "Start";
+                document.getElementById("startPause").classList.remove("timer-btn-outline");
+                document.getElementById("startPause").classList.add("timer-btn-primary");
+                clearInterval(timerInterval);
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            document.getElementById("startPause").textContent = "Start";
+            document.getElementById("startPause").classList.remove("timer-btn-outline");
+            document.getElementById("startPause").classList.add("timer-btn-primary");
+            secondsLeft = mode === "pomodoro" ? workDuration : breakDuration;
+            updateDisplay();
+        }
+
+        function skipMode(autoStart = false) {
+            clearInterval(timerInterval);
+            isRunning = false;
+            document.getElementById("startPause").textContent = "Start";
+            document.getElementById("startPause").classList.remove("timer-btn-outline");
+            document.getElementById("startPause").classList.add("timer-btn-primary");
+            mode = mode === "pomodoro" ? "break" : "pomodoro";
+            secondsLeft = mode === "pomodoro" ? workDuration : breakDuration;
+            updateDisplay();
+            if (autoStart) startPause();
+        }
+
+        // Event listeners for timer controls
+        document.getElementById("startPause").addEventListener("click", startPause);
+        document.getElementById("reset").addEventListener("click", resetTimer);
+        document.getElementById("skip").addEventListener("click", () => skipMode(false));
+
+        // Settings apply
+        document.getElementById("apply").addEventListener("click", () => {
+            const w = parseInt(document.getElementById("workInput").value);
+            const b = parseInt(document.getElementById("breakInput").value);
+            if (w > 0) workDuration = w * 60;
+            if (b > 0) breakDuration = b * 60;
+            secondsLeft = workDuration;
+            mode = "pomodoro";
+            updateDisplay();
+            resetTimer();
+        });
+
+        // Task List functionality
+        const taskInput = document.getElementById("taskInput");
+        const taskList = document.getElementById("tasks");
+
+        function createTaskElement(value) {
+            const taskItem = document.createElement("div");
+            taskItem.className = "task-item";
+            
+            const taskText = document.createElement("span");
+            taskText.textContent = value;
+            
+            const taskActions = document.createElement("div");
+            taskActions.className = "task-actions";
+            
+            const doneBtn = document.createElement("button");
+            doneBtn.innerHTML = '<i class="bx bx-check"></i>';
+            doneBtn.onclick = () => taskItem.classList.toggle("completed");
+            
+            const delBtn = document.createElement("button");
+            delBtn.innerHTML = '<i class="bx bx-trash"></i>';
+            delBtn.onclick = () => taskItem.remove();
+            
+            taskActions.appendChild(doneBtn);
+            taskActions.appendChild(delBtn);
+            
+            taskItem.appendChild(taskText);
+            taskItem.appendChild(taskActions);
+            
+            return taskItem;
+        }
+
+        document.getElementById("addTask").addEventListener("click", () => {
+            const value = taskInput.value.trim();
+            if (value === "") return;
+            
+            const taskElement = createTaskElement(value);
+            taskList.appendChild(taskElement);
+            taskInput.value = "";
+        });
+
+        taskInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                const value = taskInput.value.trim();
+                if (value === "") return;
+                
+                const taskElement = createTaskElement(value);
+                taskList.appendChild(taskElement);
+                taskInput.value = "";
+            }
+        });
+
+        // Initialize
+        updateDisplay();
+    </script>
+</body>
+</html>

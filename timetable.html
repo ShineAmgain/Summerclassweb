@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Advanced Study Timer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f9fafc;
+      margin: 0;
+      padding: 40px;
+    }
+    h1 { margin-bottom: 10px; }
+    #timer { font-size: 60px; margin: 20px 0; }
+    .controls button, input {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .mode { margin: 10px 0; font-weight: bold; }
+    .settings { margin-top: 20px; }
+    .task-list { margin-top: 30px; text-align: left; max-width: 400px; margin-inline: auto; }
+    .task-list h2 { text-align: center; }
+    ul { list-style: none; padding: 0; }
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px;
+      background: #fff;
+      margin: 4px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    li.done span { text-decoration: line-through; color: gray; }
+  </style>
+</head>
+<body>
+  <h1>Study Timer</h1>
+  <div id="timer">25:00</div>
+  <div class="controls">
+    <button id="startPause">Start</button>
+    <button id="reset">Reset</button>
+    <button id="skip">Skip</button>
+  </div>
+  <div class="mode" id="mode">Mode: Pomodoro</div>
+  <div class="session-counter">Completed Sessions: <span id="sessions">0</span></div>
+
+  <div class="settings">
+    <h2>Settings</h2>
+    <label>Work (min): <input type="number" id="workInput" value="25" min="1"></label>
+    <label>Break (min): <input type="number" id="breakInput" value="5" min="1"></label>
+    <button id="apply">Apply</button>
+  </div>
+
+  <div class="task-list">
+    <h2>Task List</h2>
+    <input type="text" id="taskInput" placeholder="New task...">
+    <button id="addTask">Add</button>
+    <ul id="tasks"></ul>
+  </div>
+
+  <script>
+    let workDuration = 25 * 60;
+    let breakDuration = 5 * 60;
+    let secondsLeft = workDuration;
+    let isRunning = false;
+    let mode = "pomodoro"; // pomodoro or break
+    let timerInterval = null;
+    let completedSessions = 0;
+
+    function pad(num) {
+      return num.toString().padStart(2, "0");
+    }
+
+    function updateDisplay() {
+      const minutes = pad(Math.floor(secondsLeft / 60));
+      const seconds = pad(secondsLeft % 60);
+      document.getElementById("timer").textContent = `${minutes}:${seconds}`;
+      document.getElementById("mode").textContent = "Mode: " + (mode === "pomodoro" ? "Pomodoro" : "Break");
+      document.getElementById("sessions").textContent = completedSessions;
+    }
+
+    function startPause() {
+      if (!isRunning) {
+        isRunning = true;
+        document.getElementById("startPause").textContent = "Pause";
+        timerInterval = setInterval(() => {
+          if (secondsLeft > 0) {
+            secondsLeft--;
+            updateDisplay();
+          } else {
+            clearInterval(timerInterval);
+            isRunning = false;
+            document.getElementById("startPause").textContent = "Start";
+            if (mode === "pomodoro") completedSessions++;
+            alert("Time's up!");
+            skipMode(true); // auto switch
+          }
+        }, 1000);
+      } else {
+        isRunning = false;
+        document.getElementById("startPause").textContent = "Start";
+        clearInterval(timerInterval);
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      isRunning = false;
+      document.getElementById("startPause").textContent = "Start";
+      secondsLeft = mode === "pomodoro" ? workDuration : breakDuration;
+      updateDisplay();
+    }
+
+    function skipMode(autoStart = false) {
+      clearInterval(timerInterval);
+      isRunning = false;
+      document.getElementById("startPause").textContent = "Start";
+      mode = mode === "pomodoro" ? "break" : "pomodoro";
+      secondsLeft = mode === "pomodoro" ? workDuration : breakDuration;
+      updateDisplay();
+      if (autoStart) startPause();
+    }
+
+    document.getElementById("startPause").addEventListener("click", startPause);
+    document.getElementById("reset").addEventListener("click", resetTimer);
+    document.getElementById("skip").addEventListener("click", () => skipMode(false));
+
+    document.getElementById("apply").addEventListener("click", () => {
+      const w = parseInt(document.getElementById("workInput").value);
+      const b = parseInt(document.getElementById("breakInput").value);
+      if (w > 0) workDuration = w * 60;
+      if (b > 0) breakDuration = b * 60;
+      secondsLeft = workDuration;
+      mode = "pomodoro";
+      updateDisplay();
+    });
+
+    // Task List
+    const taskInput = document.getElementById("taskInput");
+    const taskList = document.getElementById("tasks");
+
+    document.getElementById("addTask").addEventListener("click", () => {
+      const value = taskInput.value.trim();
+      if (value === "") return;
+
+      const li = document.createElement("li");
+      const span = document.createElement("span");
+      span.textContent = value;
+      li.appendChild(span);
+
+      const doneBtn = document.createElement("button");
+      doneBtn.textContent = "✔";
+      doneBtn.onclick = () => li.classList.toggle("done");
+      li.appendChild(doneBtn);
+
+      const delBtn = document.createElement("button");
+      delBtn.textContent = "✖";
+      delBtn.onclick = () => li.remove();
+      li.appendChild(delBtn);
+
+      taskList.appendChild(li);
+      taskInput.value = "";
+    });
+
+    updateDisplay();
+  </script>
+</body>
+</html>
