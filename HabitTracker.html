@@ -7,77 +7,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-    <!-- Load Require CSS -->
+    <!-- Bootstrap CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font CSS -->
+    <!-- Boxicons -->
     <link href="assets/css/boxicon.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <!-- Load Template CSS -->
-    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/custom.css">
     <style>
         :root {
-            --rich-black: #0D1B2A;
-            --oxford-blue: #1B263B;
-            --yinmn-blue: #415A77;
-            --silver-lake-blue: #758BA9;
-            --platinum: #E0E1DD;
+            --dark-green: #222217;
+            --olive-green: #4D5038;
+            --sage-green: #858666;
+            --beige: #D2CBC1;
+            --quiz-yellow: #F7E8C1;
         }
         body {
-            background: var(--rich-black);
-            color: var(--rich-black);
+            background: var(--beige);
+            color: var(--dark-green);
             font-family: 'Open Sans', sans-serif;
         }
-        /* Navbar Customization */
+        /* Navbar Customization (same as index.html) */
         .navbar {
-            background: var(--oxford-blue) !important;
-            min-height: 48px;
-            padding-top: 0.2rem;
-            padding-bottom: 0.2rem;
-            box-shadow: 0 2px 8px rgba(13,27,42,0.08);
+            background: var(--dark-green) !important;
+            min-height: 38px;
+            padding-top: 0.1rem;
+            padding-bottom: 0.1rem;
+            box-shadow: none;
+            border-bottom: 1px solid var(--olive-green);
         }
         .navbar-brand {
-            font-family: 'Montserrat', 'Open Sans', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--beige) !important;
             letter-spacing: 1px;
-            color: var(--platinum) !important;
+            padding-left: 8px;
             display: flex;
             align-items: center;
         }
-        .navbar-brand .logo-text-uni {
-            color: var(--platinum);
+        .nav-logo-bookicon {
+            font-size: 1.1rem;
+            color: var(--beige);
+            margin-right: 6px;
+            vertical-align: middle;
+            display: inline-block;
+            filter: drop-shadow(0 1px 2px rgba(34,34,23,0.12));
         }
-        .navbar-brand .logo-text-buddy {
-            color: var(--silver-lake-blue);
+        .navbar-brand .logo-text {
+            color: var(--beige);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
         }
-        .navbar-nav .nav-link {
-            color: var(--platinum) !important;
+        .navbar-nav {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+        .nav-link, .dropdown-toggle {
+            color: var(--beige) !important;
+            font-size: 0.85rem;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 500;
-            font-size: 1rem;
-            padding-top: 0.2rem !important;
-            padding-bottom: 0.2rem !important;
+            padding: 0.2rem 0.55rem !important;
+            margin-right: 4px;
+            margin-left: 4px;
+            transition: font-weight 0.2s, box-shadow 0.2s;
+            border-radius: 4px;
+            background: none !important;
         }
-        .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover {
-            color: var(--silver-lake-blue) !important;
-            background: transparent !important;
+        .nav-link.active, .nav-link:hover, .dropdown-toggle:hover, .dropdown-item:hover {
+            color: var(--beige) !important;
+            font-weight: 700 !important;
+            box-shadow: 0 2px 8px rgba(210,203,193,0.25);
+            background: none !important;
         }
-        .navbar-toggler {
-            border: none;
+        .dropdown-menu {
+            background: var(--dark-green);
+            border-radius: 6px;
+            min-width: 120px;
+            padding: 0.3rem 0;
         }
-        .navbar .bx {
-            color: var(--silver-lake-blue) !important;
+        .dropdown-item {
+            color: var(--beige) !important;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            padding: 0.3rem 1rem;
+            transition: font-weight 0.2s, box-shadow 0.2s;
+        }
+        .dropdown-item:hover {
+            font-weight: 700 !important;
+            background: var(--olive-green) !important;
+            box-shadow: 0 2px 8px rgba(210,203,193,0.25);
+        }
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+        @media (max-width: 900px) {
+            .navbar-nav {
+                margin-left: 0;
+            }
+            .nav-link, .dropdown-toggle {
+                padding: 0.2rem 0.4rem !important;
+                font-size: 0.82rem;
+                margin-right: 2px;
+                margin-left: 2px;
+            }
+        }
+        @media (max-width: 600px) {
+            .navbar-brand {
+                font-size: 1rem;
+            }
+            .nav-logo-bookicon {
+                font-size: 0.95rem;
+                margin-right: 4px;
+            }
+            .nav-link, .dropdown-toggle {
+                font-size: 0.78rem;
+                padding: 0.2rem 0.2rem !important;
+                margin-right: 1px;
+                margin-left: 1px;
+            }
         }
         /* Tracker Card */
         .tracker-box {
-            border: 2px solid var(--yinmn-blue);
-            border-radius: 8px;
+            border: 2px solid var(--olive-green);
+            border-radius: 18px;
             padding: 32px 24px;
             margin: 40px auto;
             max-width: 900px;
-            background: var(--platinum);
-            box-shadow: 0 4px 24px rgba(13,27,42,0.08);
+            background: var(--beige);
+            box-shadow: 0 4px 24px rgba(34,34,23,0.08);
         }
         .tracker-title {
             font-size: 2.2rem;
@@ -85,7 +146,7 @@
             letter-spacing: 2px;
             text-align: center;
             margin-bottom: 24px;
-            color: var(--oxford-blue);
+            color: var(--dark-green);
         }
         .form-inline > * {
             margin-right: 12px;
@@ -94,50 +155,50 @@
             border-radius: 6px;
         }
         .form-control:focus {
-            border-color: var(--yinmn-blue);
-            box-shadow: 0 0 0 2px var(--silver-lake-blue);
+            border-color: var(--olive-green);
+            box-shadow: 0 0 0 2px var(--sage-green);
         }
         .btn-dark {
-            background: var(--rich-black);
+            background: var(--dark-green);
             border: none;
-            color: var(--platinum);
+            color: var(--beige);
         }
         .btn-dark:hover {
-            background: var(--oxford-blue);
-            color: var(--platinum);
+            background: var(--olive-green);
+            color: var(--beige);
         }
         .table th, .table td {
             text-align: center;
             vertical-align: middle;
         }
         .table thead th {
-            border-bottom: 2px solid var(--yinmn-blue);
-            background: var(--silver-lake-blue);
-            color: var(--rich-black);
+            border-bottom: 2px solid var(--olive-green);
+            background: var(--sage-green);
+            color: var(--beige);
         }
         .table tbody td {
-            border-top: 1px solid var(--silver-lake-blue);
-            background: var(--platinum);
+            border-top: 1px solid var(--sage-green);
+            background: var(--beige);
         }
         .habit-label {
             font-weight: 600;
-            color: var(--yinmn-blue);
+            color: var(--olive-green);
         }
         .summary-box {
-            border-top: 2px solid var(--yinmn-blue);
+            border-top: 2px solid var(--olive-green);
             margin-top: 24px;
             padding-top: 16px;
             font-size: 1.1rem;
-            color: var(--oxford-blue);
+            color: var(--dark-green);
         }
         .streak-icon {
             font-size: 1.2em;
             margin-left: 4px;
-            color: var(--yinmn-blue);
+            color: var(--olive-green);
         }
         .checkbox-cell input[type="checkbox"] {
             transform: scale(1.2);
-            accent-color: var(--yinmn-blue);
+            accent-color: var(--olive-green);
         }
         .month-select {
             min-width: 120px;
@@ -154,13 +215,13 @@
         }
         .history-section {
             margin-top: 32px;
-            background: var(--silver-lake-blue);
+            background: var(--sage-green);
             border-radius: 8px;
             padding: 16px;
         }
         .history-title {
             font-weight: 700;
-            color: var(--rich-black);
+            color: var(--dark-green);
             margin-bottom: 12px;
         }
         .history-list {
@@ -169,7 +230,7 @@
         }
         .history-list li {
             margin-bottom: 8px;
-            color: var(--oxford-blue);
+            color: var(--olive-green);
         }
         @media (max-width: 768px) {
             .tracker-box {
@@ -182,49 +243,93 @@
                 font-size: 1.1rem;
             }
         }
+        /* Footer */
+        footer {
+            background: var(--dark-green);
+            color: var(--beige);
+            padding: 32px 0 16px 0;
+            width: 100%;
+        }
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .footer-logo {
+            display: flex;
+            align-items: center;
+        }
+        .footer-logo i {
+            font-size: 1.5rem;
+            color: var(--beige);
+            margin-right: 8px;
+        }
+        .footer-logo span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+        .footer-links a {
+            color: var(--beige);
+            text-decoration: none;
+        }
+        .footer-contact {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--beige);
+            margin-top: 8px;
+        }
     </style>
 </head>
 
 <body>
-    <!-- Navigation Bar Start -->
-    <nav id="main_nav" class="navbar navbar-expand-lg shadow">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand h1" href="index.html">
-                <i class='bx bx-book bx-sm' style="margin-right:6px;"></i>
-                <span class="logo-text-uni">Uni</span><span class="logo-text-buddy">Buddy</span>
+    <!-- Navbar (same as index.html) -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid d-flex align-items-center">
+            <a class="navbar-brand" href="index.html">
+                <i class="bx bx-book nav-logo-bookicon"></i>
+                <span class="logo-text">UniBuddy</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="filter: invert(93%) sepia(6%) saturate(155%) hue-rotate(353deg) brightness(110%) contrast(92%);"></span>
             </button>
-
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="navbar-toggler-success">
-                <div class="flex-fill mx-xl-5 mb-2">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="work.html">Work</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="pricing.html">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="HabitTracker.html">HabitTracker</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="navbar align-self-center d-flex">
-                    <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover'></i></a>
-                    <a class="nav-link" href="#"><i class='bx bx-cog bx-sm'></i></a>
-                    <a class="nav-link" href="#"><i class='bx bx-user-circle bx-sm'></i></a>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">GroupStudy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="HabitTracker.html">HabitTracker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">StudyChallenges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">AboutUs</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="reachUsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Reach Us
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="reachUsDropdown">
+                            <li><a class="dropdown-item" href="#">Contact</a></li>
+                            <li><a class="dropdown-item" href="#">Feedback</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -277,6 +382,27 @@
             <ul id="history-list" class="history-list"></ul>
         </div>
     </div>
+    <!-- Footer (same as index.html) -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <i class="bx bx-book"></i>
+                <span>UniBuddy</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="#">GroupStudy</a>
+                <a href="HabitTracker.html">HabitTracker</a>
+                <a href="#">StudyChallenges</a>
+                <a href="#">AboutUs</a>
+            </div>
+            <div class="footer-contact">
+                Email: contact@unibuddy.com &nbsp;|&nbsp; Contact: +123-456-7890
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap JS -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script>
         // --- State ---
         let habits = [];
@@ -497,7 +623,5 @@
             refreshUI();
         });
     </script>
-    <!-- Bootstrap JS -->
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
