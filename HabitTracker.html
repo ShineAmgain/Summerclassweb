@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>UniBuddy - Habit Tracker</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <!-- Bootstrap CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Boxicons -->
+    <link href="assets/css/boxicon.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --dark-green: #222217;
+            --olive-green: #4D5038;
+            --sage-green: #858666;
+            --beige: #D2CBC1;
+            --quiz-yellow: #F7E8C1;
+        }
+        body {
+            background: var(--beige);
+            color: var(--dark-green);
+            font-family: 'Open Sans', sans-serif;
+        }
+        /* Navbar Customization (same as index.html) */
+        .navbar {
+            background: var(--dark-green) !important;
+            min-height: 38px;
+            padding-top: 0.1rem;
+            padding-bottom: 0.1rem;
+            box-shadow: none;
+            border-bottom: 1px solid var(--olive-green);
+        }
+        .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--beige) !important;
+            letter-spacing: 1px;
+            padding-left: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo-bookicon {
+            font-size: 1.1rem;
+            color: var(--beige);
+            margin-right: 6px;
+            vertical-align: middle;
+            display: inline-block;
+            filter: drop-shadow(0 1px 2px rgba(34,34,23,0.12));
+        }
+        .navbar-brand .logo-text {
+            color: var(--beige);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+        .navbar-nav {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+        .nav-link, .dropdown-toggle {
+            color: var(--beige) !important;
+            font-size: 0.85rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            padding: 0.2rem 0.55rem !important;
+            margin-right: 4px;
+            margin-left: 4px;
+            transition: font-weight 0.2s, box-shadow 0.2s;
+            border-radius: 4px;
+            background: none !important;
+        }
+        .nav-link.active, .nav-link:hover, .dropdown-toggle:hover, .dropdown-item:hover {
+            color: var(--beige) !important;
+            font-weight: 700 !important;
+            box-shadow: 0 2px 8px rgba(210,203,193,0.25);
+            background: none !important;
+        }
+        .dropdown-menu {
+            background: var(--dark-green);
+            border-radius: 6px;
+            min-width: 120px;
+            padding: 0.3rem 0;
+        }
+        .dropdown-item {
+            color: var(--beige) !important;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            padding: 0.3rem 1rem;
+            transition: font-weight 0.2s, box-shadow 0.2s;
+        }
+        .dropdown-item:hover {
+            font-weight: 700 !important;
+            background: var(--olive-green) !important;
+            box-shadow: 0 2px 8px rgba(210,203,193,0.25);
+        }
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+        @media (max-width: 900px) {
+            .navbar-nav {
+                margin-left: 0;
+            }
+            .nav-link, .dropdown-toggle {
+                padding: 0.2rem 0.4rem !important;
+                font-size: 0.82rem;
+                margin-right: 2px;
+                margin-left: 2px;
+            }
+        }
+        @media (max-width: 600px) {
+            .navbar-brand {
+                font-size: 1rem;
+            }
+            .nav-logo-bookicon {
+                font-size: 0.95rem;
+                margin-right: 4px;
+            }
+            .nav-link, .dropdown-toggle {
+                font-size: 0.78rem;
+                padding: 0.2rem 0.2rem !important;
+                margin-right: 1px;
+                margin-left: 1px;
+            }
+        }
+        /* Tracker Card */
+        .tracker-box {
+            border: 2px solid var(--olive-green);
+            border-radius: 18px;
+            padding: 32px 24px;
+            margin: 40px auto;
+            max-width: 900px;
+            background: var(--beige);
+            box-shadow: 0 4px 24px rgba(34,34,23,0.08);
+        }
+        .tracker-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 24px;
+            color: var(--dark-green);
+        }
+        .form-inline > * {
+            margin-right: 12px;
+        }
+        .form-control, .btn {
+            border-radius: 6px;
+        }
+        .form-control:focus {
+            border-color: var(--olive-green);
+            box-shadow: 0 0 0 2px var(--sage-green);
+        }
+        .btn-dark {
+            background: var(--dark-green);
+            border: none;
+            color: var(--beige);
+        }
+        .btn-dark:hover {
+            background: var(--olive-green);
+            color: var(--beige);
+        }
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .table thead th {
+            border-bottom: 2px solid var(--olive-green);
+            background: var(--sage-green);
+            color: var(--beige);
+        }
+        .table tbody td {
+            border-top: 1px solid var(--sage-green);
+            background: var(--beige);
+        }
+        .habit-label {
+            font-weight: 600;
+            color: var(--olive-green);
+        }
+        .summary-box {
+            border-top: 2px solid var(--olive-green);
+            margin-top: 24px;
+            padding-top: 16px;
+            font-size: 1.1rem;
+            color: var(--dark-green);
+        }
+        .streak-icon {
+            font-size: 1.2em;
+            margin-left: 4px;
+            color: var(--olive-green);
+        }
+        .checkbox-cell input[type="checkbox"] {
+            transform: scale(1.2);
+            accent-color: var(--olive-green);
+        }
+        .month-select {
+            min-width: 120px;
+        }
+        .user-input {
+            min-width: 120px;
+        }
+        .add-habit-input {
+            min-width: 160px;
+        }
+        .save-btn {
+            margin-top: 10px;
+            font-weight: 600;
+        }
+        .history-section {
+            margin-top: 32px;
+            background: var(--sage-green);
+            border-radius: 8px;
+            padding: 16px;
+        }
+        .history-title {
+            font-weight: 700;
+            color: var(--dark-green);
+            margin-bottom: 12px;
+        }
+        .history-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .history-list li {
+            margin-bottom: 8px;
+            color: var(--olive-green);
+        }
+        @media (max-width: 768px) {
+            .tracker-box {
+                padding: 16px 4px;
+            }
+            .table-responsive {
+                font-size: 0.95em;
+            }
+            .navbar-brand {
+                font-size: 1.1rem;
+            }
+        }
+        /* Footer */
+        footer {
+            background: var(--dark-green);
+            color: var(--beige);
+            padding: 32px 0 16px 0;
+            width: 100%;
+        }
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .footer-logo {
+            display: flex;
+            align-items: center;
+        }
+        .footer-logo i {
+            font-size: 1.5rem;
+            color: var(--beige);
+            margin-right: 8px;
+        }
+        .footer-logo span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+        .footer-links a {
+            color: var(--beige);
+            text-decoration: none;
+        }
+        .footer-contact {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--beige);
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar (same as index.html) -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid d-flex align-items-center">
+            <a class="navbar-brand" href="index.html">
+                <i class="bx bx-book nav-logo-bookicon"></i>
+                <span class="logo-text">UniBuddy</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="filter: invert(93%) sepia(6%) saturate(155%) hue-rotate(353deg) brightness(110%) contrast(92%);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">GroupStudy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="HabitTracker.html">HabitTracker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">StudyChallenges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">AboutUs</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="reachUsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Reach Us
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="reachUsDropdown">
+                            <li><a class="dropdown-item" href="#">Contact</a></li>
+                            <li><a class="dropdown-item" href="#">Feedback</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navigation Bar End -->
+
+    <div class="tracker-box shadow">
+        <div class="mb-3 text-center">
+            <span class="tracker-title"><b>HABIT TRACKER &#10024;</b></span>
+        </div>
+        <form id="habit-form" class="form-inline justify-content-center mb-4 flex-wrap">
+            <input type="text" id="user-input" class="form-control user-input mb-2" placeholder="User" required>
+            <input type="text" id="habit-input" class="form-control add-habit-input mb-2" placeholder="Add Habit" required>
+            <select id="month-select" class="form-control month-select mb-2" required>
+                <option value="" disabled selected>Month</option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+            <button type="submit" class="btn btn-dark mb-2">Add Habit</button>
+        </form>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="habit-table">
+                <thead>
+                    <tr>
+                        <th>Habit</th>
+                        <!-- Days will be generated by JS -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Habits will be generated by JS -->
+                </tbody>
+            </table>
+        </div>
+        <button id="save-btn" class="btn btn-dark save-btn">Save Progress</button>
+        <div class="summary-box d-flex flex-wrap justify-content-between">
+            <div id="completion-box">Completion %: <span id="completion-percent">0</span>%</div>
+            <div id="streak-box">Monthly Streak: <span id="monthly-streak">0</span> <span class="streak-icon">&#9671;</span></div>
+        </div>
+        <div class="history-section">
+            <div class="history-title">Saved Progress History</div>
+            <ul id="history-list" class="history-list"></ul>
+        </div>
+    </div>
+    <!-- Footer (same as index.html) -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <i class="bx bx-book"></i>
+                <span>UniBuddy</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="#">GroupStudy</a>
+                <a href="HabitTracker.html">HabitTracker</a>
+                <a href="#">StudyChallenges</a>
+                <a href="#">AboutUs</a>
+            </div>
+            <div class="footer-contact">
+                Email: contact@unibuddy.com &nbsp;|&nbsp; Contact: +123-456-7890
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap JS -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // --- State ---
+        let habits = [];
+        let user = '';
+        let selectedMonth = new Date().getMonth() + 1; // Default to current month
+
+        // --- Elements ---
+        const habitForm = document.getElementById('habit-form');
+        const userInput = document.getElementById('user-input');
+        const habitInput = document.getElementById('habit-input');
+        const monthSelect = document.getElementById('month-select');
+        const habitTable = document.getElementById('habit-table');
+        const completionPercent = document.getElementById('completion-percent');
+        const monthlyStreak = document.getElementById('monthly-streak');
+        const saveBtn = document.getElementById('save-btn');
+        const historyList = document.getElementById('history-list');
+
+        // --- Helpers ---
+        function getDaysInMonth(month, year) {
+            return new Date(year, month, 0).getDate();
+        }
+
+        function getStorageKey(user, month, year) {
+            return `habitTracker_${user}_${month}_${year}`;
+        }
+
+        function getHistoryKey(user) {
+            return `habitTrackerHistory_${user}`;
+        }
+
+        function saveHabits() {
+            if (!user) return;
+            const year = new Date().getFullYear();
+            localStorage.setItem(getStorageKey(user, selectedMonth, year), JSON.stringify(habits));
+        }
+
+        function loadHabits() {
+            if (!user) return [];
+            const year = new Date().getFullYear();
+            const data = localStorage.getItem(getStorageKey(user, selectedMonth, year));
+            if (data) {
+                try {
+                    return JSON.parse(data);
+                } catch {
+                    return [];
+                }
+            }
+            return [];
+        }
+
+        function saveProgressHistory() {
+            if (!user) return;
+            const year = new Date().getFullYear();
+            const key = getHistoryKey(user);
+            let history = JSON.parse(localStorage.getItem(key) || "[]");
+            const entry = {
+                month: selectedMonth,
+                year: year,
+                habits: JSON.parse(JSON.stringify(habits)),
+                timestamp: new Date().toLocaleString()
+            };
+            // Remove previous entry for same month/year
+            history = history.filter(h => !(h.month === selectedMonth && h.year === year));
+            history.push(entry);
+            localStorage.setItem(key, JSON.stringify(history));
+            renderHistory();
+        }
+
+        function renderHistory() {
+            if (!user) {
+                historyList.innerHTML = "<li>Please enter a user name to view history.</li>";
+                return;
+            }
+            const key = getHistoryKey(user);
+            let history = JSON.parse(localStorage.getItem(key) || "[]");
+            if (history.length === 0) {
+                historyList.innerHTML = "<li>No saved progress yet.</li>";
+                return;
+            }
+            history.sort((a, b) => b.year - a.year || b.month - a.month);
+            historyList.innerHTML = "";
+            history.forEach(entry => {
+                const monthName = monthSelect.options[entry.month].text;
+                let habitsSummary = entry.habits.map(h => `<b>${h.name}</b>: ${h.days.filter(Boolean).length}/${h.days.length} days`).join(", ");
+                let li = document.createElement("li");
+                li.innerHTML = `<span><b>${monthName} ${entry.year}</b> - Saved: ${entry.timestamp}<br>${habitsSummary}</span>
+                <button class="btn btn-sm btn-dark" style="margin-left:8px;" onclick="loadHistoryProgress('${entry.month}','${entry.year}')">Load</button>`;
+                historyList.appendChild(li);
+            });
+        }
+
+        // Expose for button in history
+        window.loadHistoryProgress = function(month, year) {
+            if (!user) return;
+            const key = getHistoryKey(user);
+            let history = JSON.parse(localStorage.getItem(key) || "[]");
+            let entry = history.find(h => h.month == month && h.year == year);
+            if (entry) {
+                selectedMonth = parseInt(month);
+                monthSelect.value = selectedMonth;
+                habits = JSON.parse(JSON.stringify(entry.habits));
+                saveHabits();
+                refreshUI();
+            }
+        };
+
+        function renderTable() {
+            const year = new Date().getFullYear();
+            const days = getDaysInMonth(selectedMonth, year);
+
+            // Render table header
+            let theadRow = '<th>Habit</th>';
+            for (let d = 1; d <= days; d++) {
+                theadRow += `<th>${d}</th>`;
+            }
+            habitTable.querySelector('thead tr').innerHTML = theadRow;
+
+            // Render table body
+            let tbodyHtml = '';
+            habits.forEach((habit, hIdx) => {
+                tbodyHtml += `<tr><td class="habit-label">${habit.name}</td>`;
+                for (let d = 1; d <= days; d++) {
+                    tbodyHtml += `<td class="checkbox-cell">
+                        <input type="checkbox" data-habit="${hIdx}" data-day="${d-1}" ${habit.days[d-1] ? 'checked' : ''}>
+                    </td>`;
+                }
+                tbodyHtml += '</tr>';
+            });
+            habitTable.querySelector('tbody').innerHTML = tbodyHtml;
+        }
+
+        function updateStats() {
+            let totalChecks = 0, totalBoxes = 0, maxStreak = 0;
+            habits.forEach(habit => {
+                let streak = 0, currentStreak = 0;
+                habit.days.forEach(checked => {
+                    totalBoxes++;
+                    if (checked) {
+                        totalChecks++;
+                        currentStreak++;
+                        if (currentStreak > streak) streak = currentStreak;
+                    } else {
+                        currentStreak = 0;
+                    }
+                });
+                if (streak > maxStreak) maxStreak = streak;
+            });
+            completionPercent.textContent = totalBoxes ? Math.round((totalChecks / totalBoxes) * 100) : 0;
+            monthlyStreak.textContent = maxStreak;
+        }
+
+        function refreshUI() {
+            renderTable();
+            updateStats();
+            renderHistory();
+        }
+
+        // --- Event Listeners ---
+        habitForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            user = userInput.value.trim();
+            if (!user) {
+                alert("Please enter a user name.");
+                return;
+            }
+            const habitName = habitInput.value.trim();
+            selectedMonth = parseInt(monthSelect.value) || (new Date().getMonth() + 1);
+            if (!habitName) return;
+            const year = new Date().getFullYear();
+            const days = getDaysInMonth(selectedMonth, year);
+            habits.push({ name: habitName, days: Array(days).fill(false) });
+            habitInput.value = '';
+            saveHabits();
+            refreshUI();
+        });
+
+        monthSelect.addEventListener('change', function() {
+            selectedMonth = parseInt(this.value);
+            if (!user) return;
+            habits = loadHabits();
+            // If habits exist but days don't match, fix array length
+            const year = new Date().getFullYear();
+            const days = getDaysInMonth(selectedMonth, year);
+            habits.forEach(habit => {
+                if (!habit.days || habit.days.length !== days) {
+                    habit.days = Array(days).fill(false);
+                }
+            });
+            saveHabits();
+            refreshUI();
+        });
+
+        userInput.addEventListener('change', function() {
+            user = userInput.value.trim();
+            habits = loadHabits();
+            refreshUI();
+        });
+
+        habitTable.addEventListener('change', function(e) {
+            if (e.target.matches('input[type="checkbox"]')) {
+                const hIdx = parseInt(e.target.getAttribute('data-habit'));
+                const dIdx = parseInt(e.target.getAttribute('data-day'));
+                habits[hIdx].days[dIdx] = e.target.checked;
+                saveHabits();
+                updateStats();
+            }
+        });
+
+        saveBtn.addEventListener('click', function() {
+            saveProgressHistory();
+        });
+
+        // --- Initial Render ---
+        window.addEventListener('DOMContentLoaded', function() {
+            monthSelect.value = selectedMonth;
+            userInput.value = user;
+            habits = loadHabits();
+            refreshUI();
+        });
+    </script>
+</body>
+</html>
