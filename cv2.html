@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jhon Vincent M. Halaman - Resume</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      background-color: #D2CBC1;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 800px;
+      background-color: #fff;
+      display: flex;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .left {
+      width: 35%;
+      background-color: #858666;
+      color: white;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .left img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .left h1 {
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      font-weight: bold;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    .left p {
+      font-size: 13px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .contact {
+      text-align: center;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    .right {
+      width: 65%;
+      padding: 30px;
+    }
+
+    .right h2 {
+      font-size: 16px;
+      color: #858666;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .right h3 {
+      font-size: 14px;
+      margin: 5px 0;
+      font-weight: normal;
+    }
+
+    .right p {
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .right ul {
+      list-style: none;
+      font-size: 13px;
+      padding-left: 0;
+      margin-bottom: 20px;
+    }
+
+    .right ul li::before {
+      content: "➤ ";
+      color: #858666;
+      margin-right: 5px;
+    }
+
+    .right-section {
+      margin-bottom: 30px;
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background-color: #858666;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #4D5038;
+    }
+
+    .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color : #858666;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s ease;
+  }
+
+  .btn:hover {
+    background-color: #4D5038
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="back-btn" onclick="history.back()"> Back</button>
+    <!-- Left Section -->
+    <div class="left">
+      <img src="assets/img/img2.jpg" alt="dilasha" />
+      <h1>Dilasha Vaidya</h1>
+      
+      <div class="section-title">Profile</div>
+      <p>I am an individual with a strong foundation in leadership,
+        communication, and problem-solving. Passionate about designing
+        and technology-driven solutions, I aim to combine creativity with
+        technical skills to build impactful digital experiences. Ambitious,
+        open-minded, and eager to explore new areas of growth.
+        </p>
+      
+
+      <div class="section-title">Contact Me</div>
+      <div class="contact">
+        <p>✆9745969067</p>
+        <p>✉︎dilashavaidya@gmail.com</p>
+        <p>⚲Chyamasingh, Bhaktapur</p>
+      </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right">
+      <div class="right-section">
+        <h2>Education</h2>
+        <h3>Everest English  School</h3>
+        <p>2066–2078<br><em>Schooling</em></p>
+        <h3>Khwopa Secondary School</h3>
+        <p>2079–2081 BS<br><em>High School</em></p>
+        <h3>Islington College</h3>
+        <p>2081-present BS<br><em>BSC(HONS) Computing - First year</em></p>
+      </div>
+
+      <div class="right-section">
+        <h2>Language</h2>
+        <ul>
+          <li>Nepali</li>
+          <li>English</li>
+        </ul>
+      </div>
+
+      <div class="right-section">
+        <h2>Computer Skills</h2>
+        <ul>
+          <li>UI/UX Design (Wireframing &Prototyping)</li>
+          <li>Data Visualization (Power BI)</li>
+          <li>Basic Programming (Python /Java )</li>
+          <li>Microsoft Excel & Word</li>
+        </ul>
+      </div>
+
+      <div class="right-section">
+        <h2>Work Experience</h2>
+        <h3>A year long Presidency experience in The Everest
+        Journalism Club</h3>
+        <p>Completion of The Women LEAD Nepal's School
+        Leadership program</p>
+      </div>
+
+      <div class="right-section">
+        <a href="https://github.com/dilashaahaha" class="btn">  Github profile</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
