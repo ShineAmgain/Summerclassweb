@@ -91,7 +91,7 @@ python -m http.server 8000
 <a href= "https://shineamgain.github.io/Summerclassweb/"> https://shineamgain.github.io/Summerclassweb/</a>
 
   <h2>👩‍💻 Contributors</h2>
-  <div class="contributors">
+  <div class="contributors"> 
     <a href="https://github.com/shineamgain" target="_blank">@shineamgain</a>
     <a href="https://github.com/dilashavaidya" target="_blank">@dilashavaidya</a>
     <a href="https://github.com/nishriti" target="_blank">@nishrititamrakar</a>
