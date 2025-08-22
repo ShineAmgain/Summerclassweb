@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - UniBuddy</title>
+    <!-- Bootstrap CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Boxicons -->
+    <link href="assets/css/boxicon.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-green: #222217;
+            --olive-green: #4D5038;
+            --sage-green: #858666;
+            --beige: #D2CBC1;
+            --quiz-yellow: #F7E8C1;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--beige);
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Thin Navbar */
+        .navbar {
+            background: var(--dark-green) !important;
+            min-height: 38px;
+            padding-top: 0.1rem;
+            padding-bottom: 0.1rem;
+            box-shadow: none;
+            border-bottom: 1px solid var(--olive-green);
+        }
+        
+        .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--beige) !important;
+            letter-spacing: 1px;
+            padding-left: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-logo-bookicon {
+            font-size: 1.1rem;
+            color: var(--beige);
+            margin-right: 6px;
+            vertical-align: middle;
+            display: inline-block;
+            filter: drop-shadow(0 1px 2px rgba(34,34,23,0.12));
+        }
+        
+        .navbar-brand .logo-text {
+            color: var(--beige);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+        
+        .navbar-nav {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-link, .dropdown-toggle {
+            color: var(--beige) !important;
+            font-size: 0.85rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            padding: 0.2rem 0.55rem !important;
+            margin-right: 4px;
+            margin-left: 4px;
+            transition: font-weight 0.2s, box-shadow 0.2s;
+            border-radius: 4px;
+            background: none !important;
+        }
+        
+        .nav-link.active, .nav-link:hover, .dropdown-toggle:hover, .dropdown-item:hover {
+            color: var(--beige) !important;
+            font-weight: 700 !important;
+            box-shadow: 0 2px 8px rgba(210,203,193,0.25);
+            background: none !important;
+        }
+        
+        .dropdown-menu {
+            background: var(--dark-green);
+            border-radius: 6px;
+            min-width: 120px;
+            padding: 0.3rem 0;
+        }
+        
+        .dropdown-item {
+            color: var(--beige) !important;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            padding: 0.3rem 1rem;
+            transition: font-weight 0.2s, box-shadow 0.2s;
+        }
+        
+        .dropdown-item:hover {
+            font-weight: 700 !important;
+            background: var(--olive-green) !important;
+            box-shadow: 0 2px 8px rgba(210,203,193,0.25);
+        }
+        
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+        
+        @media (max-width: 900px) {
+            .navbar-nav {
+                margin-left: 0;
+            }
+            .nav-link, .dropdown-toggle {
+                padding: 0.2rem 0.4rem !important;
+                font-size: 0.82rem;
+                margin-right: 2px;
+                margin-left: 2px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .navbar-brand {
+                font-size: 1rem;
+            }
+            .nav-logo-bookicon {
+                font-size: 0.95rem;
+                margin-right: 4px;
+            }
+            .nav-link, .dropdown-toggle {
+                font-size: 0.78rem;
+                padding: 0.2rem 0.2rem !important;
+                margin-right: 1px;
+                margin-left: 1px;
+            }
+        }
+        
+        /* About Section */
+        .about-section {
+            background: var(--dark-green);
+            color: white;
+            padding: 40px 20px;
+        }
+        
+        .about-section h1 {
+            margin: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .about-section p {
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.6;
+            color: #f1f1f1;
+        }
+        
+        h2 {
+            margin: 30px 0;
+            color: #ffffff;
+            background: var(--sage-green);
+            color: white;
+            padding: 40px 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .team {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .member {
+            background: var(--olive-green);
+            border-radius: 8px;
+            padding: 20px;
+            width: 220px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            color: #000;
+        }
+        
+        .member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .member img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .member h3 {
+            margin: 10px 0 5px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .member p {
+            font-size: 14px;
+            color: #ddd;
+            margin: 5px 0 10px;
+        }
+
+        .about {
+            max-width: 700px;   
+            margin: 50px auto;  
+            text-align: center; 
+            font-size: 16px;
+            line-height: 1.6;
+            color: black;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-green); 
+            color: var(--beige); 
+            padding: 32px 0 16px 0; 
+            width: 100%;
+            margin-top: 40px;
+        }
+        
+        .footer-container {
+            max-width: 1100px; 
+            margin: 0 auto; 
+            display: flex; 
+            flex-wrap: wrap; 
+            align-items: center; 
+            justify-content: space-between;
+        }
+        
+        .footer-links {
+            display: flex; 
+            gap: 24px; 
+            align-items: center; 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 1rem;
+        }
+        
+        .footer-links a {
+            color: var(--beige); 
+            text-decoration: none;
+        }
+        
+        .footer-contact {
+            font-family: 'Open Sans', sans-serif; 
+            font-size: 0.95rem; 
+            color: var(--beige); 
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Thin Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid d-flex align-items-center">
+            <a class="navbar-brand" href="index.html">
+                <i class="bx bx-book nav-logo-bookicon"></i>
+                <span class="logo-text">UniBuddy</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="filter: invert(93%) sepia(6%) saturate(155%) hue-rotate(353deg) brightness(110%) contrast(92%);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">GroupStudy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="HabitTracker.html">HabitTracker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="studyChallengeNav" href="#">StudyChallenges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="AboutUs.html">AboutUs</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="reachUsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Reach Us
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="reachUsDropdown">
+                            <li><a class="dropdown-item" href="#">Contact</a></li>
+                            <li><a class="dropdown-item" href="#">Feedback</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <div class="about-section">
+        <h1>About us</h1>
+    </div>
+
+    <div class="about">
+        Welcome to our Group Study platform "Unibuddy" — a space designed to make learning together easier and more productive. Our website brings students together with tools that encourage focus, consistency, and collaboration.
+
+        With features like a study timer, habit tracker, and group study sessions, we help learners stay on track, build strong study habits, and achieve their goals. Whether you're preparing for exams, learning new skills, or working on projects, our platform creates an environment that combines discipline with teamwork.
+
+        We believe that studying doesn't have to be a lonely journey — with the right support and tools, learning can be engaging, motivating, and fun.
+    </div>
+
+    <!-- Team Section -->
+    <h2>Meet Our Team</h2>
+    <div class="team">
+        <a href="cv1.html" class="member">
+            <img src="assets/img/img1.jpg" alt="Shine Amgain">
+            <h3>Shine Amgain</h3>
+            <p>Creative Leader</p>
+        </a>
+        <a href="cv2.html" class="member">
+            <img src="assets/img/img2.jpg" alt="Dilasha Vaidya">
+            <h3>Dilasha Vaidya</h3>
+            <p>Sales Manager</p>
+        </a>
+        <a href="cv3.html" class="member">
+            <img src="assets/img/img3.jpg" alt="Nishriti Tamrakar">
+            <h3>Nishriti Tamrakar</h3>
+            <p>Web Developer</p>
+        </a>
+        <a href="cv4.html" class="member">
+            <img src="assets/img/img4.jpg" alt="Brishika Thapa Magar">
+            <h3>Brishika Thapa Magar</h3>
+            <p>Web Designer</p>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div style="display: flex; align-items: center;">
+                <i class="bx bx-book" style="font-size: 1.5rem; color: var(--beige); margin-right: 8px;"></i>
+                <span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.2rem;">UniBuddy</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="#">GroupStudy</a>
+                <a href="HabitTracker.html">HabitTracker</a>
+                <a href="#">StudyChallenges</a>
+                <a href="AboutUs.html">AboutUs</a>
+            </div>
+            <div class="footer-contact">
+                Email: contact@unibuddy.com &nbsp;|&nbsp; Contact: +123-456-7890
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Make nav links bold and add shadow on hover
+        document.querySelectorAll('.nav-link, .dropdown-toggle, .dropdown-item').forEach(function (el) {
+            el.addEventListener('mouseenter', function () {
+                el.style.fontWeight = '700';
+                el.style.boxShadow = '0 2px 8px rgba(210,203,193,0.25)';
+            });
+            el.addEventListener('mouseleave', function () {
+                el.style.fontWeight = '';
+                el.style.boxShadow = '';
+            });
+        });
+    </script>
+</body>
+</html>
