@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dilasha Vaidya - Resume</title>
+  <!-- Bootstrap CSS -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Boxicons -->
+  <link href="assets/css/boxicon.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark-green: #222217;
+      --olive-green: #4D5038;
+      --sage-green: #858666;
+      --beige: #D2CBC1;
+      --quiz-yellow: #F7E8C1;
+    }
+    
+    /* Thin Navbar */
+    .navbar {
+      background: var(--dark-green) !important;
+      min-height: 38px;
+      padding-top: 0.1rem;
+      padding-bottom: 0.1rem;
+      box-shadow: none;
+      border-bottom: 1px solid var(--olive-green);
+    }
+    
+    .navbar-brand {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--beige) !important;
+      letter-spacing: 1px;
+      padding-left: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-logo-bookicon {
+      font-size: 1.1rem;
+      color: var(--beige);
+      margin-right: 6px;
+      vertical-align: middle;
+      display: inline-block;
+      filter: drop-shadow(0 1px 2px rgba(34,34,23,0.12));
+    }
+    
+    .navbar-brand .logo-text {
+      color: var(--beige);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+    
+    .navbar-nav {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-link, .dropdown-toggle {
+      color: var(--beige) !important;
+      font-size: 0.85rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      padding: 0.2rem 0.55rem !important;
+      margin-right: 4px;
+      margin-left: 4px;
+      transition: font-weight 0.2s, box-shadow 0.2s;
+      border-radius: 4px;
+      background: none !important;
+    }
+    
+    .nav-link.active, .nav-link:hover, .dropdown-toggle:hover, .dropdown-item:hover {
+      color: var(--beige) !important;
+      font-weight: 700 !important;
+      box-shadow: 0 2px 8px rgba(210,203,193,0.25);
+      background: none !important;
+    }
+    
+    .dropdown-menu {
+      background: var(--dark-green);
+      border-radius: 6px;
+      min-width: 120px;
+      padding: 0.3rem 0;
+    }
+    
+    .dropdown-item {
+      color: var(--beige) !important;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      padding: 0.3rem 1rem;
+      transition: font-weight 0.2s, box-shadow 0.2s;
+    }
+    
+    .dropdown-item:hover {
+      font-weight: 700 !important;
+      background: var(--olive-green) !important;
+      box-shadow: 0 2px 8px rgba(210,203,193,0.25);
+    }
+    
+    .navbar-collapse {
+      justify-content: flex-end;
+    }
+    
+    @media (max-width: 900px) {
+      .navbar-nav {
+        margin-left: 0;
+      }
+      .nav-link, .dropdown-toggle {
+        padding: 0.2rem 0.4rem !important;
+        font-size: 0.82rem;
+        margin-right: 2px;
+        margin-left: 2px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .navbar-brand {
+        font-size: 1rem;
+      }
+      .nav-logo-bookicon {
+        font-size: 0.95rem;
+        margin-right: 4px;
+      }
+      .nav-link, .dropdown-toggle {
+        font-size: 0.78rem;
+        padding: 0.2rem 0.2rem !important;
+        margin-right: 1px;
+        margin-left: 1px;
+      }
+    }
+    
+    /* Footer */
+    .resume-footer {
+      background: var(--dark-green); 
+      color: var(--beige); 
+      padding: 32px 0 16px 0; 
+      width: 100%;
+      margin-top: 40px;
+    }
+    
+    .footer-container {
+      max-width: 1100px; 
+      margin: 0 auto; 
+      display: flex; 
+      flex-wrap: wrap; 
+      align-items: center; 
+      justify-content: space-between;
+    }
+    
+    .footer-links {
+      display: flex; 
+      gap: 24px; 
+      align-items: center; 
+      font-family: 'Montserrat', sans-serif; 
+      font-size: 1rem;
+    }
+    
+    .footer-links a {
+      color: var(--beige); 
+      text-decoration: none;
+    }
+    
+    .footer-contact {
+      font-family: 'Open Sans', sans-serif; 
+      font-size: 0.95rem; 
+      color: var(--beige); 
+      margin-top: 8px;
+    }
+    
+    /* Resume-specific styles (unchanged from original) */
+    .resume-body {
+      font-family: sans-serif;
+      background-color: #D2CBC1;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .resume-container {
+      width: 800px;
+      background-color: #fff;
+      display: flex;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .resume-left {
+      width: 35%;
+      background-color: #858666;
+      color: white;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .resume-left img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .resume-left h1 {
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .resume-section-title {
+      font-weight: bold;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    .resume-left p {
+      font-size: 13px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .resume-contact {
+      text-align: center;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    .resume-right {
+      width: 65%;
+      padding: 30px;
+    }
+
+    .resume-right h2 {
+      font-size: 16px;
+      color: #858666;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .resume-right h3 {
+      font-size: 14px;
+      margin: 5px 0;
+      font-weight: normal;
+    }
+
+    .resume-right p {
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .resume-right ul {
+      list-style: none;
+      font-size: 13px;
+      padding-left: 0;
+      margin-bottom: 20px;
+    }
+
+    .resume-right ul li::before {
+      content: "➤ ";
+      color: #858666;
+      margin-right: 5px;
+    }
+
+    .resume-right-section {
+      margin-bottom: 30px;
+    }
+
+    .resume-back-btn {
+      position: absolute;
+      top: 70px;
+      left: 15px;
+      background-color: #858666;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .resume-back-btn:hover {
+      background-color: #4D5038;
+    }
+
+    .resume-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #858666;
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: 0.3s ease;
+    }
+
+    .resume-btn:hover {
+      background-color: #4D5038;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <!-- Thin Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid d-flex align-items-center">
+      <a class="navbar-brand" href="index.html">
+        <i class="bx bx-book nav-logo-bookicon"></i>
+        <span class="logo-text">UniBuddy</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="filter: invert(93%) sepia(6%) saturate(155%) hue-rotate(353deg) brightness(110%) contrast(92%);"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">GroupStudy</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="HabitTracker.html">HabitTracker</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="studyChallengeNav" href="#">StudyChallenges</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="AboutUs.html">AboutUs</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="reachUsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Reach Us
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="reachUsDropdown">
+              <li><a class="dropdown-item" href="#">Contact</a></li>
+              <li><a class="dropdown-item" href="#">Feedback</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="resume-body">
+    <div class="resume-container">
+      <button class="resume-back-btn" onclick="history.back()"> Back</button>
+      <!-- Left Section -->
+      <div class="resume-left">
+        <img src="assets/img/img2.jpg" alt="dilasha" />
+        <h1>Dilasha Vaidya</h1>
+        
+        <div class="resume-section-title">Profile</div>
+        <p>I am an individual with a strong foundation in leadership,
+          communication, and problem-solving. Passionate about designing
+          and technology-driven solutions, I aim to combine creativity with
+          technical skills to build impactful digital experiences. Ambitious,
+          open-minded, and eager to explore new areas of growth.
+        </p>
+        
+
+        <div class="resume-section-title">Contact Me</div>
+        <div class="resume-contact">
+          <p>✆9745969067</p>
+          <p>✉︎dilashavaidya@gmail.com</p>
+          <p>⚲Chyamasingh, Bhaktapur</p>
+        </div>
+      </div>
+
+      <!-- Right Section -->
+      <div class="resume-right">
+        <div class="resume-right-section">
+          <h2>Education</h2>
+          <h3>Everest English  School</h3>
+          <p>2066–2078<br><em>Schooling</em></p>
+          <h3>Khwopa Secondary School</h3>
+          <p>2079–2081 BS<br><em>High School</em></p>
+          <h3>Islington College</h3>
+          <p>2081-present BS<br><em>BSC(HONS) Computing - First year</em></p>
+        </div>
+
+        <div class="resume-right-section">
+          <h2>Language</h2>
+          <ul>
+            <li>Nepali</li>
+            <li>English</li>
+          </ul>
+        </div>
+
+        <div class="resume-right-section">
+          <h2>Computer Skills</h2>
+          <ul>
+            <li>UI/UX Design (Wireframing &Prototyping)</li>
+            <li>Data Visualization (Power BI)</li>
+            <li>Basic Programming (Python /Java )</li>
+            <li>Microsoft Excel & Word</li>
+          </ul>
+        </div>
+
+        <div class="resume-right-section">
+          <h2>Work Experience</h2>
+          <h3>A year long Presidency experience in The Everest
+          Journalism Club</h3>
+          <p>Completion of The Women LEAD Nepal's School
+          Leadership program</p>
+        </div>
+
+        <div class="resume-right-section">
+          <a href="https://github.com/dilashaahaha" class="resume-btn">  Github profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="resume-footer">
+    <div class="footer-container">
+      <div style="display: flex; align-items: center;">
+        <i class="bx bx-book" style="font-size: 1.5rem; color: var(--beige); margin-right: 8px;"></i>
+        <span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.2rem;">UniBuddy</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="#">GroupStudy</a>
+        <a href="HabitTracker.html">HabitTracker</a>
+        <a href="#">StudyChallenges</a>
+        <a href="AboutUs.html">AboutUs</a>
+      </div>
+      <div class="footer-contact">
+        Email: contact@unibuddy.com &nbsp;|&nbsp; Contact: +123-456-7890
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Make nav links bold and add shadow on hover
+    document.querySelectorAll('.nav-link, .dropdown-toggle, .dropdown-item').forEach(function (el) {
+      el.addEventListener('mouseenter', function () {
+        el.style.fontWeight = '700';
+        el.style.boxShadow = '0 2px 8px rgba(210,203,193,0.25)';
+      });
+      el.addEventListener('mouseleave', function () {
+        el.style.fontWeight = '';
+        el.style.boxShadow = '';
+      });
+    });
+  </script>
+</body>
+</html>
