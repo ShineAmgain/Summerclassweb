@@ -3,45 +3,164 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unibuddy - Study Tools</title>
+  <title>UniBuddy - Group Study</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Boxicons CSS -->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-   <!-- Custom CSS -->
-   <link rel="stylesheet" href="assets/css/custom.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
     /* Color Palette */
     :root {
-      --rich-black: #0D1B2A;
-      --oxford-blue: #1B263B;
-      --yinmn-blue: #415A77;
-      --silver-lake: #778DA9;
-      --platinum: #E0E1DD;
-      --silver-lake-blue: #758BA9;
+      --dark-green: #222217;
+      --olive-green: #4D5038;
+      --sage-green: #858666;
+      --beige: #D2CBC1;
+      --quiz-yellow: #F7E8C1;
     }
 
     body {
       margin: 0;
-      font-family: 'Open Sans', Arial, sans-serif;
-      background-color: var(--rich-black);
-      color: var(--platinum);
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--beige);
+      color: var(--dark-green);
       display: flex;
       flex-direction: column;
-      align-items: center;
       min-height: 100vh;
     }
 
-   
+    /* Thin Navbar */
+    .navbar {
+      background: var(--dark-green) !important;
+      min-height: 38px;
+      padding-top: 0.1rem;
+      padding-bottom: 0.1rem;
+      box-shadow: none;
+      border-bottom: 1px solid var(--olive-green);
+    }
     
+    .navbar-brand {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--beige) !important;
+      letter-spacing: 1px;
+      padding-left: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-logo-bookicon {
+      font-size: 1.1rem;
+      color: var(--beige);
+      margin-right: 6px;
+      vertical-align: middle;
+      display: inline-block;
+      filter: drop-shadow(0 1px 2px rgba(34,34,23,0.12));
+    }
+    
+    .navbar-brand .logo-text {
+      color: var(--beige);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+    
+    .navbar-nav {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-link, .dropdown-toggle {
+      color: var(--beige) !important;
+      font-size: 0.85rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      padding: 0.2rem 0.55rem !important;
+      margin-right: 4px;
+      margin-left: 4px;
+      transition: font-weight 0.2s, box-shadow 0.2s;
+      border-radius: 4px;
+      background: none !important;
+    }
+    
+    .nav-link.active, .nav-link:hover, .dropdown-toggle:hover, .dropdown-item:hover {
+      color: var(--beige) !important;
+      font-weight: 700 !important;
+      box-shadow: 0 2px 8px rgba(210,203,193,0.25);
+      background: none !important;
+    }
+    
+    .dropdown-menu {
+      background: var(--dark-green);
+      border-radius: 6px;
+      min-width: 120px;
+      padding: 0.3rem 0;
+    }
+    
+    .dropdown-item {
+      color: var(--beige) !important;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      padding: 0.3rem 1rem;
+      transition: font-weight 0.2s, box-shadow 0.2s;
+    }
+    
+    .dropdown-item:hover {
+      font-weight: 700 !important;
+      background: var(--olive-green) !important;
+      box-shadow: 0 2px 8px rgba(210,203,193,0.25);
+    }
+    
+    .navbar-collapse {
+      justify-content: flex-end;
+    }
+    
+    @media (max-width: 900px) {
+      .navbar-nav {
+        margin-left: 0;
+      }
+      .nav-link, .dropdown-toggle {
+        padding: 0.2rem 0.4rem !important;
+        font-size: 0.82rem;
+        margin-right: 2px;
+        margin-left: 2px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .navbar-brand {
+        font-size: 1rem;
+      }
+      .nav-logo-bookicon {
+        font-size: 0.95rem;
+        margin-right: 4px;
+      }
+      .nav-link, .dropdown-toggle {
+        font-size: 0.78rem;
+        padding: 0.2rem 0.2rem !important;
+        margin-right: 1px;
+        margin-left: 1px;
+      }
+    }
+
     /* Main content area */
     .main-content {
       width: 100%;
       max-width: 1200px;
-      padding: 90px 20px 40px;
-      margin-top: 20px;
+      padding: 70px 20px 40px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dark-green);
+      text-align: center;
+      margin-bottom: 40px;
     }
     
     .tabs {
@@ -54,58 +173,64 @@
     .tab-btn {
       padding: 12px 24px;
       border: none;
-      border-radius: 20px;
-      background-color: var(--oxford-blue);
-      color: var(--platinum);
+      border-radius: 30px;
+      background-color: white;
+      color: var(--dark-green);
       cursor: pointer;
       transition: all 0.3s ease;
       font-weight: 600;
       font-size: 1rem;
+      box-shadow: 0 2px 8px rgba(34,34,23,0.08);
+      font-family: 'Montserrat', sans-serif;
     }
 
     .tab-btn:hover {
-      background-color: var(--yinmn-blue);
+      background-color: var(--olive-green);
+      color: white;
       transform: translateY(-2px);
     }
 
     .tab-btn.active {
-      background-color: var(--yinmn-blue);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      background-color: var(--olive-green);
+      color: white;
+      box-shadow: 0 4px 16px rgba(34,34,23,0.18);
     }
 
     .card {
-      background-color: var(--oxford-blue);
-      padding: 25px;
-      border-radius: 16px;
+      background-color: white;
+      padding: 30px;
+      border-radius: 28px;
       width: 100%;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 16px rgba(34,34,23,0.10);
       margin-bottom: 30px;
+      border: none;
     }
 
     h2 {
-      color: var(--platinum);
+      color: var(--dark-green);
       margin-bottom: 20px;
       font-weight: 700;
-      border-bottom: 2px solid var(--yinmn-blue);
+      border-bottom: 2px solid var(--olive-green);
       padding-bottom: 10px;
+      font-family: 'Montserrat', sans-serif;
     }
 
     iframe {
       width: 100%;
       height: 500px;
-      border: 2px solid var(--yinmn-blue);
-      border-radius: 12px;
-      background-color: var(--rich-black);
+      border: 2px solid var(--olive-green);
+      border-radius: 18px;
+      background-color: white;
     }
 
     textarea {
       width: 100%;
       height: 250px;
       padding: 15px;
-      border-radius: 8px;
-      border: 2px solid var(--yinmn-blue);
-      background-color: var(--rich-black);
-      color: var(--platinum);
+      border-radius: 12px;
+      border: 2px solid var(--olive-green);
+      background-color: white;
+      color: var(--dark-green);
       resize: vertical;
       font-size: 1rem;
       margin-top: 15px;
@@ -121,63 +246,87 @@
     .note-btn {
       padding: 10px 18px;
       border: none;
-      border-radius: 8px;
-      background-color: var(--yinmn-blue);
-      color: var(--platinum);
+      border-radius: 30px;
+      background-color: var(--olive-green);
+      color: white;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: all 0.3s;
       font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
     }
 
     .note-btn:hover {
-      background-color: var(--silver-lake);
+      background-color: var(--sage-green);
       transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(34,34,23,0.18);
     }
 
     .note {
       margin-top: 15px;
       font-size: 0.9rem;
-      color: var(--silver-lake);
+      color: var(--sage-green);
       font-style: italic;
     }
     
     /* Footer */
     footer {
-      background-color: var(--oxford-blue) !important;
-      margin-top: auto;
+      background: var(--dark-green);
+      color: var(--beige);
+      padding: 32px 0 16px 0;
       width: 100%;
+      margin-top: auto;
     }
     
     footer .container {
-      padding: 2rem 0;
-      max-width: 1200px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
     }
     
-    footer h3, footer h2 {
-      color: var(--platinum);
-      margin-bottom: 1rem;
+    .footer-brand {
+      display: flex;
+      align-items: center;
     }
     
-    footer a {
-      color: var(--silver-lake);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    
-    footer a:hover {
-      color: var(--platinum);
-    }
-    
-    footer .text-light {
-      color: var(--silver-lake) !important;
-    }
-    
-    .bg-primary {
-      background-color: var(--yinmn-blue) !important;
-    }
-    
-    .list-inline-item i {
+    .footer-brand i {
       font-size: 1.5rem;
+      color: var(--beige);
+      margin-right: 8px;
+    }
+    
+    .footer-brand span {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+    }
+    
+    .footer-links a {
+      color: var(--beige);
+      text-decoration: none;
+    }
+    
+    .footer-links a:hover {
+      color: var(--quiz-yellow);
+    }
+    
+    .footer-contact {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--beige);
+      margin-top: 8px;
+      width: 100%;
+      text-align: center;
     }
     
     /* Responsive adjustments */
@@ -189,11 +338,21 @@
       .navbar-nav .nav-item {
         margin: 0.1rem 0;
       }
+      
+      footer .container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
     }
     
     @media (max-width: 768px) {
       .main-content {
-        padding: 80px 15px 30px;
+        padding: 60px 15px 30px;
       }
       
       .tabs {
@@ -210,26 +369,26 @@
         height: 400px;
       }
       
-      footer .row > div {
-        margin-bottom: 2rem;
+      .footer-links {
+        flex-direction: column;
+        gap: 10px;
       }
     }
   </style>
 </head>
 <body>
   <!-- Navigation Bar -->
-  <nav id="main_nav" class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid d-flex align-items-center">
       <a class="navbar-brand" href="index.html">
-        <i class='bx bx-book bx-sm' style="margin-right:8px;"></i>
-        <span class="logo-text-uni">Uni</span><span class="logo-text-buddy">Buddy</span>
+        <i class="bx bx-book nav-logo-bookicon"></i>
+        <span class="logo-text">UniBuddy</span>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class='bx bx-menu'></i>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="filter: invert(93%) sepia(6%) saturate(155%) hue-rotate(353deg) brightness(110%) contrast(92%);"></span>
       </button>
-
-      <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link" href="index.html">Home</a>
           </li>
@@ -237,30 +396,32 @@
             <a class="nav-link" href="about.html">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="group-study.html">Study Tools</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="HabitTracker.html">Habit Tracker</a>
+            <a class="nav-link active" href="group-study.html">Group Study</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="timer.html">Study Timer</a>
+            <a class="nav-link" href="HabitTracker.html">HabitTracker</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
+            <a class="nav-link" href="timer.html">Study Challenges</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="reachUsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Reach Us
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="reachUsDropdown">
+              <li><a class="dropdown-item" href="contact.html">Contact</a></li>
+              <li><a class="dropdown-item" href="#">Feedback</a></li>
+            </ul>
           </li>
         </ul>
-        <div class="d-flex">
-          <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover'></i></a>
-          <a class="nav-link" href="#"><i class='bx bx-cog bx-sm'></i></a>
-          <a class="nav-link" href="#"><i class='bx bx-user-circle bx-sm'></i></a>
-        </div>
       </div>
     </div>
   </nav>
 
   <!-- Main Content -->
   <div class="main-content">
+    <h1 class="section-title">Study Tools</h1>
+    
     <div class="tabs">
       <button class="tab-btn active" onclick="showTab('study')">Study Tools</button>
       <button class="tab-btn" onclick="showTab('group')">Group Study</button>
@@ -268,9 +429,9 @@
 
     <div class="card">
       <div id="study" class="tab-content">
-        <h2>Study Tools</h2>
-
-        <h3 style="margin-top:20px;">✍️ Your Notes</h3>
+        <h2>✍️ Your Notes</h2>
+        <p>Jot down your thoughts, ideas, and study notes. Everything is automatically saved!</p>
+        
         <textarea id="notesArea" placeholder="Write your notes here..."></textarea>
         <div class="note-controls">
           <button class="note-btn" onclick="saveNotes()">Save Notes</button>
@@ -281,6 +442,8 @@
 
       <div id="group" class="tab-content" style="display:none;">
         <h2>Group Study Room</h2>
+        <p>Collaborate with your study buddies in real-time. Share ideas and learn together!</p>
+        
         <iframe 
           src="https://meet.jit.si/UnibuddyRoom123"
           allow="camera; microphone; fullscreen; display-capture"
@@ -289,115 +452,46 @@
         <p class="note">Share this room link with your friends to join! 💻</p>
       </div>
     </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="pt-4">
-    <div class="container">
-      <div class="row py-4">
-        <div class="col-lg-3 col-12 align-left">
-          <a class="navbar-brand" href="index.html">
-            <i class='bx bx-book bx-sm text-light'></i>
-            <span class="text-light h5">Uni</span> <span class="text-light h5 semi-bold-600">Buddy</span>
-          </a>
-          <p class="text-light my-lg-4 my-2">
-            Your academic companion for better studying habits, time management, and productivity.
-          </p>
-          <ul class="list-inline footer-icons light-300">
-            <li class="list-inline-item m-0">
-              <a class="text-light" target="_blank" href="http://facebook.com/">
-                <i class='bx bxl-facebook-square bx-md'></i>
-              </a>
-            </li>
-            <li class="list-inline-item m-0">
-              <a class="text-light" target="_blank" href="https://www.linkedin.com/">
-                <i class='bx bxl-linkedin-square bx-md'></i>
-              </a>
-            </li>
-            <li class="list-inline-item m-0">
-              <a class="text-light" target="_blank" href="https://www.whatsapp.com/">
-                <i class='bx bxl-whatsapp-square bx-md'></i>
-              </a>
-            </li>
-            <li class="list-inline-item m-0">
-              <a class="text-light" target="_blank" href="https://www.instagram.com/">
-                <i class='bx bxl-instagram-alt bx-md'></i>
-              </a>
-            </li>
-          </ul>
+    
+    <!-- Additional Tools Section -->
+    <div class="card">
+      <h2>More Study Resources</h2>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <div class="resource-item p-3 rounded" style="background-color: var(--quiz-yellow);">
+            <h4><i class='bx bx-time-five'></i> Study Timer</h4>
+            <p>Use our Pomodoro timer to manage your study sessions effectively.</p>
+            <button class="note-btn" onclick="window.location.href='timer.html'">Open Timer</button>
+          </div>
         </div>
-
-        <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-          <h3 class="h4 pb-lg-3 text-light light-300">Our Company</h3>
-          <ul class="list-unstyled text-light light-300">
-            <li class="pb-2">
-              <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light" href="index.html">Home</a>
-            </li>
-            <li class="pb-2">
-              <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="about.html">About Us</a>
-            </li>
-            <li class="pb-2">
-              <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="work.html">Work</a>
-            </li>
-            <li class="pb-2">
-              <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="pricing.html">Pricing</a>
-            </li>
-            <li class="pb-2">
-              <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="contact.html">Contact</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-          <h2 class="h4 pb-lg-3 text-light light-300">Our Tools</h2>
-          <ul class="list-unstyled text-light light-300">
-            <li class="pb-2">
-              <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="HabitTracker.html">Habit Tracker</a>
-            </li>
-            <li class="pb-2">
-              <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="timer.html">Study Timer</a>
-            </li>
-            <li class="pb-2">
-              <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="group-study.html">Group Study</a>
-            </li>
-            <li class="pb-2">
-              <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Note Taking</a>
-            </li>
-            <li class="pb-2">
-              <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Task Manager</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-          <h2 class="h4 pb-lg-3 text-light light-300">Contact Us</h2>
-          <ul class="list-unstyled text-light light-300">
-            <li class="pb-2">
-              <i class='bx-fw bx bx-phone bx-xs'></i><a class="text-decoration-none text-light py-1" href="tel:010-020-0340">+1 (555) 123-4567</a>
-            </li>
-            <li class="pb-2">
-              <i class='bx-fw bx bx-mail-send bx-xs'></i><a class="text-decoration-none text-light py-1" href="mailto:support@unibuddy.com">support@unibuddy.com</a>
-            </li>
-          </ul>
+        <div class="col-md-6 mb-3">
+          <div class="resource-item p-3 rounded" style="background-color: var(--quiz-yellow);">
+            <h4><i class='bx bx-check-square'></i> Habit Tracker</h4>
+            <p>Build consistent study habits with our tracking tool.</p>
+            <button class="note-btn" onclick="window.location.href='HabitTracker.html'">Open Tracker</button>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="w-100 bg-primary py-3">
-      <div class="container">
-        <div class="row pt-2">
-          <div class="col-lg-6 col-sm-12">
-            <p class="text-lg-start text-center text-light light-300">
-              © Copyright 2023 UniBuddy. All Rights Reserved.
-            </p>
-          </div>
-          <div class="col-lg-6 col-sm-12">
-            <p class="text-lg-end text-center text-light light-300">
-              Designed for <span class="text-light">Students</span> by <span class="text-light">UniBuddy Team</span>
-            </p>
-          </div>
-        </div>
-        </div>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-brand">
+        <i class="bx bx-book"></i>
+        <span>UniBuddy</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="group-study.html">Study Tools</a>
+        <a href="HabitTracker.html">HabitTracker</a>
+        <a href="timer.html">Study Timer</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-contact">
+        Email: contact@unibuddy.com &nbsp;|&nbsp; Contact: +123-456-7890
       </div>
     </div>
   </footer>
@@ -434,6 +528,18 @@
         localStorage.removeItem('unibuddyNotes');
       }
     }
+
+    // Make nav links bold and add shadow on hover
+    document.querySelectorAll('.nav-link, .dropdown-toggle, .dropdown-item').forEach(function (el) {
+      el.addEventListener('mouseenter', function () {
+        el.style.fontWeight = '700';
+        el.style.boxShadow = '0 2px 8px rgba(210,203,193,0.25)';
+      });
+      el.addEventListener('mouseleave', function () {
+        el.style.fontWeight = '';
+        el.style.boxShadow = '';
+      });
+    });
   </script>
 </body>
 </html>

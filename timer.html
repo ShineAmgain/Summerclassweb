@@ -9,104 +9,155 @@
     <!-- Boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-     <!-- Custom CSS -->
-     <link rel="stylesheet" href="assets/css/custom.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         /* UniBuddy Color Palette */
         :root {
-            --rich-black: #0D1B2A;
-            --oxford-blue: #1B263B;
-            --yinmn-blue: #415A77;
-            --silver-lake: #778DA9;
-            --platinum: #E0E1DD;
-            --silver-lake-blue: #758BA9;
+            --dark-green: #222217;
+            --olive-green: #4D5038;
+            --sage-green: #858666;
+            --beige: #D2CBC1;
+            --quiz-yellow: #F7E8C1;
         }
 
         body {
             font-family: 'Open Sans', sans-serif;
-            background-color: var(--rich-black);
-            color: var(--platinum);
+            background-color: var(--beige);
+            color: var(--dark-green);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
-        /* Navigation Bar */
+        /* Thin Navbar */
         .navbar {
-            background: var(--oxford-blue) !important;
-            min-height: 50px;
-            padding: 0.2rem 0;
-            box-shadow: 0 2px 8px rgba(13,27,42,0.08);
-            width: 100%;
-        }
-        
-        .navbar .container {
-            max-width: 1200px;
-            padding: 0 15px;
+            background: var(--dark-green) !important;
+            min-height: 38px;
+            padding-top: 0.1rem;
+            padding-bottom: 0.1rem;
+            box-shadow: none;
+            border-bottom: 1px solid var(--olive-green);
         }
         
         .navbar-brand {
-            font-family: 'Montserrat', 'Open Sans', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: 0.5px;
-            color: var(--platinum) !important;
+            font-size: 1.1rem;
+            color: var(--beige) !important;
+            letter-spacing: 1px;
+            padding-left: 8px;
             display: flex;
             align-items: center;
-            margin-right: 1rem;
         }
         
-        .navbar-brand .logo-text-uni {
-            color: var(--platinum);
+        .nav-logo-bookicon {
+            font-size: 1.1rem;
+            color: var(--beige);
+            margin-right: 6px;
+            vertical-align: middle;
+            display: inline-block;
+            filter: drop-shadow(0 1px 2px rgba(34,34,23,0.12));
         }
         
-        .navbar-brand .logo-text-buddy {
-            color: var(--silver-lake-blue);
+        .navbar-brand .logo-text {
+            color: var(--beige);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
         }
         
-        .navbar-nav .nav-item {
-            margin: 0 0.2rem;
+        .navbar-nav {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
         }
         
-        .navbar-nav .nav-link {
-            color: var(--platinum) !important;
+        .nav-link, .dropdown-toggle {
+            color: var(--beige) !important;
+            font-size: 0.85rem;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 500;
-            font-size: 0.95rem;
-            padding: 0.4rem 0.7rem !important;
+            padding: 0.2rem 0.55rem !important;
+            margin-right: 4px;
+            margin-left: 4px;
+            transition: font-weight 0.2s, box-shadow 0.2s;
             border-radius: 4px;
-            transition: all 0.2s ease;
+            background: none !important;
         }
         
-        .navbar-nav .nav-link.active, 
-        .navbar-nav .nav-link:hover {
-            color: var(--silver-lake-blue) !important;
-            background: rgba(255, 255, 255, 0.1) !important;
+        .nav-link.active, .nav-link:hover, .dropdown-toggle:hover, .dropdown-item:hover {
+            color: var(--beige) !important;
+            font-weight: 700 !important;
+            box-shadow: 0 2px 8px rgba(210,203,193,0.25);
+            background: none !important;
         }
         
-        .navbar-toggler {
-            border: none;
-            padding: 0.25rem 0.5rem;
+        .dropdown-menu {
+            background: var(--dark-green);
+            border-radius: 6px;
+            min-width: 120px;
+            padding: 0.3rem 0;
         }
         
-        .navbar .bx {
-            color: var(--silver-lake-blue) !important;
-            font-size: 1.2rem;
+        .dropdown-item {
+            color: var(--beige) !important;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            padding: 0.3rem 1rem;
+            transition: font-weight 0.2s, box-shadow 0.2s;
         }
         
+        .dropdown-item:hover {
+            font-weight: 700 !important;
+            background: var(--olive-green) !important;
+            box-shadow: 0 2px 8px rgba(210,203,193,0.25);
+        }
+        
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+        
+        @media (max-width: 900px) {
+            .navbar-nav {
+                margin-left: 0;
+            }
+            .nav-link, .dropdown-toggle {
+                padding: 0.2rem 0.4rem !important;
+                font-size: 0.82rem;
+                margin-right: 2px;
+                margin-left: 2px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .navbar-brand {
+                font-size: 1rem;
+            }
+            .nav-logo-bookicon {
+                font-size: 0.95rem;
+                margin-right: 4px;
+            }
+            .nav-link, .dropdown-toggle {
+                font-size: 0.78rem;
+                padding: 0.2rem 0.2rem !important;
+                margin-right: 1px;
+                margin-left: 1px;
+            }
+        }
+
         /* Main Content */
         .container {
             max-width: 1200px;
         }
         
         section {
-            padding: 90px 0 40px;
+            padding: 70px 0 40px;
             flex: 1;
         }
         
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Montserrat', sans-serif;
-            color: var(--platinum);
+            color: var(--dark-green);
         }
         
         h1 {
@@ -116,27 +167,27 @@
         
         /* Timer Container */
         .timer-container {
-            background-color: var(--rich-black);
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 28px;
+            box-shadow: 0 4px 16px rgba(34,34,23,0.10);
             margin-bottom: 2rem;
-
         }
         
         .mode-display {
             font-size: 1.5rem;
             font-weight: 600;
-            color: var(--silver-lake-blue);
+            color: var(--olive-green);
             text-align: center;
             margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
         }
         
         #timer {
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 700;
             text-align: center;
-            color: var(--platinum);
+            color: var(--dark-green);
             margin: 1.5rem 0;
             font-family: 'Montserrat', monospace;
         }
@@ -144,83 +195,92 @@
         .timer-btn {
             padding: 0.75rem 1.5rem;
             border: none;
-            border-radius: 8px;
+            border-radius: 30px;
             font-weight: 600;
             margin: 0 0.5rem;
             transition: all 0.3s ease;
             cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .timer-btn-primary {
-            background-color: var(--yinmn-blue);
-            color: var(--platinum);
+            background-color: var(--olive-green);
+            color: white;
         }
         
         .timer-btn-primary:hover {
-            background-color: var(--silver-lake);
+            background-color: var(--sage-green);
             transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(34,34,23,0.18);
         }
         
         .timer-btn-outline {
             background-color: transparent;
-            border: 2px solid var(--yinmn-blue);
-            color: var(--platinum);
+            border: 2px solid var(--olive-green);
+            color: var(--dark-green);
         }
         
         .timer-btn-outline:hover {
-            background-color: var(--yinmn-blue);
+            background-color: var(--olive-green);
+            color: white;
             transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(34,34,23,0.18);
         }
         
         .badge {
-            background-color: var(--yinmn-blue) !important;
+            background-color: var(--olive-green) !important;
             font-size: 1rem;
             padding: 0.5rem 1rem;
+            border-radius: 30px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
         }
         
         /* Settings Section */
         .settings-section {
             margin-top: 2rem;
             padding-top: 2rem;
-            border-top: 1px solid var(--yinmn-blue);
+            border-top: 1px solid var(--olive-green);
         }
         
         .form-label {
-            color: var(--platinum);
+            color: var(--dark-green);
             font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .form-control {
-            background-color: var(--rich-black);
-            border: 2px solid var(--yinmn-blue);
-            color: var(--platinum);
-            border-radius: 8px;
+            background-color: white;
+            border: 2px solid var(--olive-green);
+            color: var(--dark-green);
+            border-radius: 12px;
             padding: 0.75rem;
         }
         
         .form-control:focus {
-            background-color: var(--rich-black);
-            border-color: var(--silver-lake-blue);
-            box-shadow: 0 0 0 0.2rem rgba(117, 139, 169, 0.25);
-            color: var(--platinum);
+            background-color: white;
+            border-color: var(--sage-green);
+            box-shadow: 0 0 0 0.2rem rgba(77, 80, 56, 0.25);
+            color: var(--dark-green);
         }
         
         /* Task List */
         .task-list {
             margin-top: 2rem;
             padding-top: 2rem;
-            border-top: 1px solid var(--yinmn-blue);
+            border-top: 1px solid var(--olive-green);
         }
         
         .input-group .btn {
-            background-color: var(--yinmn-blue);
-            border-color: var(--yinmn-blue);
-            color: var(--platinum);
+            background-color: var(--olive-green);
+            border-color: var(--olive-green);
+            color: white;
+            border-radius: 12px;
         }
         
         .input-group .btn:hover {
-            background-color: var(--silver-lake);
-            border-color: var(--silver-lake);
+            background-color: var(--sage-green);
+            border-color: var(--sage-green);
         }
         
         .task-item {
@@ -229,9 +289,9 @@
             align-items: center;
             padding: 0.75rem 1rem;
             margin-bottom: 0.5rem;
-            background-color: var(--rich-black);
-            border-radius: 8px;
-            border: 1px solid var(--yinmn-blue);
+            background-color: white;
+            border-radius: 12px;
+            border: 1px solid var(--olive-green);
         }
         
         .task-item.completed {
@@ -247,59 +307,81 @@
         .task-actions button {
             background: none;
             border: none;
-            color: var(--silver-lake);
+            color: var(--olive-green);
             cursor: pointer;
             font-size: 1.2rem;
             transition: color 0.2s;
         }
         
         .task-actions button:hover {
-            color: var(--platinum);
+            color: var(--dark-green);
         }
         
         /* Footer */
         footer {
-            background-color: var(--oxford-blue) !important;
-            margin-top: auto;
+            background: var(--dark-green);
+            color: var(--beige);
+            padding: 32px 0 16px 0;
             width: 100%;
+            margin-top: auto;
         }
         
         footer .container {
-            padding: 2rem 0;
-            max-width: 1200px;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
         }
         
-        footer h3, footer h2 {
-            color: var(--platinum);
-            margin-bottom: 1rem;
+        .footer-brand {
+            display: flex;
+            align-items: center;
         }
         
-        footer a {
-            color: var(--silver-lake);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        
-        footer a:hover {
-            color: var(--platinum);
-        }
-        
-        footer .text-light {
-            color: var(--silver-lake) !important;
-        }
-        
-        .bg-primary {
-            background-color: var(--yinmn-blue) !important;
-        }
-        
-        .list-inline-item i {
+        .footer-brand i {
             font-size: 1.5rem;
+            color: var(--beige);
+            margin-right: 8px;
+        }
+        
+        .footer-brand span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .footer-links a {
+            color: var(--beige);
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: var(--quiz-yellow);
+        }
+        
+        .footer-contact {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--beige);
+            margin-top: 8px;
+            width: 100%;
+            text-align: center;
         }
         
         /* Responsive adjustments */
         @media (max-width: 768px) {
             #timer {
-                font-size: 3rem;
+                font-size: 3.5rem;
             }
             
             .timer-btn {
@@ -317,8 +399,29 @@
                 width: 100%;
             }
             
-            footer .row > div {
-                margin-bottom: 2rem;
+            footer .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .timer-container {
+                padding: 1.5rem;
+            }
+            
+            #timer {
+                font-size: 3rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
             }
         }
     </style>
@@ -326,18 +429,17 @@
 
 <body>
     <!-- Navigation Bar -->
-    <nav id="main_nav" class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid d-flex align-items-center">
             <a class="navbar-brand" href="index.html">
-                <i class='bx bx-book bx-sm' style="margin-right:8px;"></i>
-                <span class="logo-text-uni">Uni</span><span class="logo-text-buddy">Buddy</span>
+                <i class="bx bx-book nav-logo-bookicon"></i>
+                <span class="logo-text">UniBuddy</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class='bx bx-menu'></i>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="filter: invert(93%) sepia(6%) saturate(155%) hue-rotate(353deg) brightness(110%) contrast(92%);"></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
@@ -345,24 +447,24 @@
                         <a class="nav-link" href="about.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="group-study.html">Study Tools</a>
+                        <a class="nav-link" href="group-study.html">Group Study</a>
                     </li>
-                    
                     <li class="nav-item">
                         <a class="nav-link" href="HabitTracker.html">HabitTracker</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="timer.html">Study Timer</a>
+                        <a class="nav-link active" href="timer.html">Study Challenges</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="reachUsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Reach Us
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="reachUsDropdown">
+                            <li><a class="dropdown-item" href="contact.html">Contact</a></li>
+                            <li><a class="dropdown-item" href="#">Feedback</a></li>
+                        </ul>
                     </li>
                 </ul>
-                <div class="d-flex">
-                    <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover'></i></a>
-                    <a class="nav-link" href="#"><i class='bx bx-cog bx-sm'></i></a>
-                    <a class="nav-link" href="#"><i class='bx bx-user-circle bx-sm'></i></a>
-                </div>
             </div>
         </div>
     </nav>
@@ -389,7 +491,7 @@
                         <button id="skip" class="timer-btn timer-btn-outline">Skip</button>
                     </div>
                     <div class="text-center mt-3">
-                        <span class="badge bg-primary">Sessions Completed: <span id="sessions">0</span></span>
+                        <span class="badge">Sessions Completed: <span id="sessions">0</span></span>
                     </div>
 
                     <div class="settings-section">
@@ -423,111 +525,22 @@
     </section>
 
     <!-- Footer -->
-    <footer class="pt-4">
+    <footer>
         <div class="container">
-            <div class="row py-4">
-                <div class="col-lg-3 col-12 align-left">
-                    <a class="navbar-brand" href="index.html">
-                        <i class='bx bx-book bx-sm text-light'></i>
-                        <span class="text-light h5">Uni</span> <span class="text-light h5 semi-bold-600">Buddy</span>
-                    </a>
-                    <p class="text-light my-lg-4 my-2">
-                        Your academic companion for better studying habits, time management, and productivity.
-                    </p>
-                    <ul class="list-inline footer-icons light-300">
-                        <li class="list-inline-item m-0">
-                            <a class="text-light" target="_blank" href="http://facebook.com/">
-                                <i class='bx bxl-facebook-square bx-md'></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item m-0">
-                            <a class="text-light" target="_blank" href="https://www.linkedin.com/">
-                                <i class='bx bxl-linkedin-square bx-md'></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item m-0">
-                            <a class="text-light" target="_blank" href="https://www.whatsapp.com/">
-                                <i class='bx bxl-whatsapp-square bx-md'></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item m-0">
-                            <a class="text-light" target="_blank" href="https://www.instagram.com/">
-                                <i class='bx bxl-instagram-alt bx-md'></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h3 class="h4 pb-lg-3 text-light light-300">Our Company</h3>
-                    <ul class="list-unstyled text-light light-300">
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light" href="index.html">Home</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="about.html">About Us</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="work.html">Work</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="pricing.html">Pricing</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="contact.html">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">Our Tools</h2>
-                    <ul class="list-unstyled text-light light-300">
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="HabitTracker.html">Habit Tracker</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="timer.html">Study Timer</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="group-study.html">Group Study</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Note Taking</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Task Manager</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">Contact Us</h2>
-                    <ul class="list-unstyled text-light light-300">
-                        <li class="pb-2">
-                            <i class='bx-fw bx bx-phone bx-xs'></i><a class="text-decoration-none text-light py-1" href="tel:010-020-0340">+1 (555) 123-4567</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bx-mail-send bx-xs'></i><a class="text-decoration-none text-light py-1" href="mailto:support@unibuddy.com">support@unibuddy.com</a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="footer-brand">
+                <i class="bx bx-book"></i>
+                <span>UniBuddy</span>
             </div>
-        </div>
-
-        <div class="w-100 bg-primary py-3">
-            <div class="container">
-                <div class="row pt-2">
-                    <div class="col-lg-6 col-sm-12">
-                        <p class="text-lg-start text-center text-light light-300">
-                            © Copyright 2023 UniBuddy. All Rights Reserved.
-                        </p>
-                    </div>
-                    <div class="col-lg-6 col-sm-12">
-                        <p class="text-lg-end text-center text-light light-300">
-                            Designed for <span class="text-light">Students</span> by <span class="text-light">UniBuddy Team</span>
-                        </p>
-                    </div>
-                </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="group-study.html">Study Tools</a>
+                <a href="HabitTracker.html">HabitTracker</a>
+                <a href="timer.html">Study Timer</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-contact">
+                Email: contact@unibuddy.com &nbsp;|&nbsp; Contact: +123-456-7890
             </div>
         </div>
     </footer>
@@ -684,6 +697,18 @@
 
         // Initialize
         updateDisplay();
+
+        // Make nav links bold and add shadow on hover
+        document.querySelectorAll('.nav-link, .dropdown-toggle, .dropdown-item').forEach(function (el) {
+            el.addEventListener('mouseenter', function () {
+                el.style.fontWeight = '700';
+                el.style.boxShadow = '0 2px 8px rgba(210,203,193,0.25)';
+            });
+            el.addEventListener('mouseleave', function () {
+                el.style.fontWeight = '';
+                el.style.boxShadow = '';
+            });
+        });
     </script>
 </body>
 </html>
