@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Purple Buzz - Pricing Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <!-- Load Require CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font CSS -->
+    <link href="assets/css/boxicon.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Load Tempalte CSS -->
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/custom.css">
+<!--
+    
+TemplateMo 561 Purple Buzz
+
+https://templatemo.com/tm-561-purple-buzz
+
+-->
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UniBuddy</title>
+<style>
+  body{
+    margin:0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background:#4D5038;
+  }
+
+  nav{
+    background:#222217;
+    padding:12px 0;
+    color:#4D5038;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  .nav-inner{
+    max-width:960px;
+    margin:0 auto;
+    display:flex;
+    justify-content:flex-start;
+  }
+
+  .nav-btn{
+    color: #E0E1DD;
+    font-weight:600;
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:8px 16px;
+    border-radius:8px;
+    transition: 0.3s;
+    font-size:16px;
+  }
+  .nav-btn:hover{
+    background: rgba(255,255,255,0.1);
+  }
+
+  .arrow{
+    font-size:12px;
+    transition:0.3s;
+  }
+
+  .dropdown{
+    position:absolute;
+    top:50px;
+    left:0;
+    background:#4D5038;
+    min-width:200px;
+    border-radius:12px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.25);
+    display:none;
+    overflow:hidden;
+    z-index:10;
+  }
+
+  .dropdown a{
+    display:block;
+    padding:12px 16px;
+    text-decoration:none;
+    color:#E0E1DD;
+    font-weight:500;
+    transition:0.2s;
+  }
+  .dropdown a:hover{
+    background:#858666;
+    color:#222217;
+  }
+
+  .wrapper{
+    max-width:600px;
+    margin:36px auto;
+    padding:0 16px;
+  }
+
+  h2{
+    margin-bottom:20px;
+    color:#222217;
+    font-weight:700;
+    text-align:center;
+    letter-spacing:1px;
+  }
+
+  .card{
+    background:#858666;
+    border-radius:16px;
+    padding:28px 35px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.12);
+    transition:0.3s;
+    color:#E0E1DD;
+  }
+
+  .card:hover{
+    box-shadow:0 20px 50px rgba(0,0,0,0.15);
+  }
+
+  label{
+    display:block;
+    margin-top:14px;
+    font-size:15px;
+  }
+
+  input,textarea,button{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    border:1px solid #858666;
+    border-radius:10px;
+    font-size:15px;
+    outline:none;
+    transition:0.3s;
+    background:#E0E1DD;
+    color:#222217;
+  }
+
+  input:focus, textarea:focus{
+    border-color:#11B263;
+    box-shadow:0 0 8px #4D5038(17,178,99,0.3);
+  }
+
+  button{
+    background:#4D5038;
+    color:#E0E1DD;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+    margin-top:20px;
+    transition:0.3s;
+  }
+
+  button:hover{
+    background:#222217; 
+
+  .success{
+    margin-top:14px;
+    text-align:center;
+    font-weight:600;
+    color:#27ae60;
+  }
+  #feedbackSection, #contactSection{display:none}
+
+</style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-item" style="position:relative;">
+        <a href="#" id="feedbackMenu" class="nav-btn" aria-expanded="false">
+          Feedback <span class="arrow">▼</span>
+        </a>
+        <div id="menu" class="dropdown">
+          <a href="?mode=feedback" id="navFeedback">Feedback Form</a>
+          <a href="?mode=contact" id="navContact">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrapper">
+    <section id="feedbackSection" class="card">
+      <h2 id="feedbackTitle">Feedback Form</h2>
+      <form id="feedbackForm">
+        <label for="fbName">Name</label>
+        <input id="fbName" type="text" placeholder="Your full name" required />
+
+        <label for="fbEmail">Email</label>
+        <input id="fbEmail" type="email" placeholder="you@example.com" required />
+
+        <label for="fbMsg">Message</label>
+        <textarea id="fbMsg" rows="5" placeholder="Write your feedback..." required></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+      <p class="success" id="fbOk"></p>
+    </section>
+
+    <section id="contactSection" class="card">
+      <h2 id="contactTitle">Contact Us</h2>
+      <form id="contactForm">
+        <label for="cName">Name</label>
+        <input id="cName" type="text" placeholder="Your name" required />
+
+        <label for="cAddress">Address</label>
+        <input id="cAddress" type="text" placeholder="Street, City, Country" required />
+
+        <label for="cPhone">Phone</label>
+        <input id="cPhone" type="tel" placeholder="+977" required />
+
+        <label for="cEmail">Email</label>
+        <input id="cEmail" type="email" placeholder="you@example.com" required />
+
+        <button type="submit">Send</button>
+      </form>
+      <p class="success" id="cOk"></p>
+    </section>
+  </main>
+
+<script>
+  const menuBtn = document.getElementById('feedbackMenu');
+  const menu = document.getElementById('menu');
+
+  menuBtn.addEventListener('click', e=>{
+    e.preventDefault();
+    const open = menu.style.display==='block';
+    menu.style.display = open?'none':'block';
+    menuBtn.setAttribute('aria-expanded', String(!open));
+  });
+
+  document.addEventListener('click', e=>{
+    if(!menu.contains(e.target) && e.target!==menuBtn){
+      menu.style.display='none';
+      menuBtn.setAttribute('aria-expanded','false');
+    }
+  });
+
+  const params = new URLSearchParams(window.location.search);
+  const mode = (params.get('mode') || 'feedback').toLowerCase();
+  const feedbackSection = document.getElementById('feedbackSection');
+  const contactSection = document.getElementById('contactSection');
+
+  if(mode==='contact'){
+    document.title='UniBuddy — Contact Us';
+    contactSection.style.display='block';
+    feedbackSection.style.display='none';
+  }else{
+    document.title='UniBuddy — Feedback';
+    feedbackSection.style.display='block';
+    contactSection.style.display='none';
+  }
+
+  document.getElementById('feedbackForm').addEventListener('submit', e=>{
+    e.preventDefault();
+    document.getElementById('fbOk').textContent='✅ Feedback submitted!';
+    e.target.reset();
+  });
+
+  document.getElementById('contactForm').addEventListener('submit', e=>{
+    e.preventDefault();
+    document.getElementById('cOk').textContent='✅ Message sent!';
+    e.target.reset();
+  });
+</script>
+</body>
+</html>
