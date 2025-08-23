@@ -30,7 +30,7 @@
       min-height: 100vh;
     }
 
-    /* Thin Navbar */
+    /* Thin Navbar - Updated to match homepage */
     .navbar {
       background: var(--dark-green) !important;
       min-height: 38px;
@@ -268,7 +268,7 @@
       font-style: italic;
     }
     
-    /* Footer */
+    /* Footer - Updated to match homepage */
     footer {
       background: var(--dark-green);
       color: var(--beige);
@@ -314,6 +314,7 @@
     .footer-links a {
       color: var(--beige);
       text-decoration: none;
+      transition: color 0.2s;
     }
     
     .footer-links a:hover {
@@ -377,7 +378,7 @@
   </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
+  <!-- Navigation Bar - Updated to match homepage structure -->
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid d-flex align-items-center">
       <a class="navbar-brand" href="index.html">
@@ -393,24 +394,24 @@
             <a class="nav-link" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="group-study.html">Group Study</a>
+            <a class="nav-link active" href="group-study.html">GroupStudy</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="HabitTracker.html">HabitTracker</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="timer.html">Study Challenges</a>
+            <a class="nav-link" href="timer.html">StudyChallenges</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="aboutus.html">AboutUs</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="reachUsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Reach Us
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="reachUsDropdown">
-              <li><a class="dropdown-item" href="contact.html">Contact</a></li>
-              <li><a class="dropdown-item" href="#">Feedback</a></li>
+              <li><a class="dropdown-item" href="feedback.html?mode=contact">Contact Us</a></li>
+              <li><a class="dropdown-item" href="feedback.html?mode=feedback">Feedback Form</a></li>
             </ul>
           </li>
         </ul>
@@ -475,7 +476,7 @@
     </div>
   </div>
 
-  <!-- Footer -->
+  <!-- Footer - Updated to match homepage -->
   <footer>
     <div class="container">
       <div class="footer-brand">
@@ -484,11 +485,11 @@
       </div>
       <div class="footer-links">
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="group-study.html">Study Tools</a>
+        <a href="aboutus.html">AboutUs</a>
+        <a href="group-study.html">GroupStudy</a>
         <a href="HabitTracker.html">HabitTracker</a>
-        <a href="timer.html">Study Timer</a>
-        <a href="contact.html">Contact</a>
+        <a href="timer.html">StudyChallenges</a>
+        <a href="feedback.html?mode=contact">Contact</a>
       </div>
       <div class="footer-contact">
         Email: contact@unibuddy.com &nbsp;|&nbsp; Contact: +123-456-7890
