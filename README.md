@@ -51,16 +51,15 @@
     .video {
       margin: 20px 0;
     }
-    iframe {
+    video {
       width: 100%;
       max-width: 640px;
-      height: 360px;
       border-radius: 8px;
     }
   </style>
 </head>
 <body>
-  <h1>📚 UniBuddy</h1>
+  <h1>UniBuddy</h1>
   <p><em>Progress, not perfection.</em></p>
   <p>
     UniBuddy is a web platform built by students, for students — making studying 
@@ -70,59 +69,56 @@
 
   <h2>⚡ Features</h2>
   <ul>
-    <li>🎯 Study Challenges – currently includes a ⏳ Pomodoro Timer to stay focused with structured study & break intervals.</li>
-    <li>🧘 Habit Tracker – build and track habits that stick.</li>
-    <li>👥 Group Study – hop into study sessions with friends.</li>
-    <li>📓 Study Notes – take, organize, and review your study materials.</li>
-    
+    <li>* Study Challenges – currently includes a ⏳ Pomodoro Timer to stay focused with structured study & break intervals.</li>
+    <li>* Habit Tracker – build and track habits that stick.</li>
+    <li>* Group Study – hop into study sessions with friends.</li>
+    <li>* Study Notes – take, organize, and review your study materials.</li>
   </ul>
 
-  <h2>🚀 Setup Instructions</h2>
+  <h2>Setup Instructions</h2>
   <pre><code># Clone the repo
-git clone https://github.com/your-username/unibuddy.git
-cd unibuddy
+git clone https://github.com/ShineAmgain/Summerclassweb.git
+cd Summerclassweb
 
 # Run locally (example using Python)
 python -m http.server 8000
   </code></pre>
   <p>Then open <a href="http://localhost:8000">http://localhost:8000</a> in your browser.</p>
 
-# Hosted through GitHub Pages 
-<a href= "https://shineamgain.github.io/Summerclassweb/"> https://shineamgain.github.io/Summerclassweb/</a>
+  <h2>Hosted on GitHub Pages</h2>
+  <p>
+    <a href="https://shineamgain.github.io/Summerclassweb/" target="_blank">
+      Visit UniBuddy Website
+    </a>
+  </p>
 
-  <h2>👩‍💻 Contributors</h2>
+  <h2>Contributors</h2>
   <div class="contributors"> 
     <a href="https://github.com/shineamgain" target="_blank">@shineamgain</a>
     <a href="https://github.com/dilashavaidya" target="_blank">@dilashavaidya</a>
     <a href="https://github.com/nishriti" target="_blank">@nishrititamrakar</a>
     <a href="https://github.com/brishikamagar" target="_blank">@brishikamagar</a>
-
   </div>
 
-  <h2>📸 Screenshots</h2>
+  <h2>Screenshots</h2>
   <p><strong>Home page Preview</strong></p>
   <img src="assets/screenshots/home.jpeg" alt="Home Screenshot"> 
 
-  <p><strong>Habit tracker Preview</strong></p>
-  <img src="assets/screenshots/habit.jpeg" alt="Habit tracker Screenshot">
-  <p><strong>Group Study</strong></p>
-  <img src="assets/screenshots/Group Study.png" alt="Group Study Screenshot">
+  <p><strong>Habit Tracker Preview</strong></p>
+  <img src="assets/screenshots/habit.jpeg" alt="Habit Tracker Screenshot">
+
+  <p><strong>Group Study Preview</strong></p>
+  <img src="assets/screenshots/group-study.png" alt="Group Study Screenshot">
 
   <p><strong>Study Challenges Preview</strong></p>
   <img src="assets/screenshots/timer.png" alt="Study Challenges Screenshot">
 
-<p><strong>About us Preview</strong></p>
-  <img src="assets/screenshots/about.jpeg" alt="About us Screenshot">
+  <p><strong>About Us Preview</strong></p>
+  <img src="assets/screenshots/about.jpeg" alt="About Us Screenshot">
 
-
-
-  <h2>🎥 Demo</h2>
-  <div class="video">
-    <iframe src="https://www.youtube.com/embed/your-demo-link" 
-            title="Demo video" frameborder="0" allowfullscreen></iframe>
-  </div>
-
-  <h2>📝 License</h2>
+  
+  
+  <h2>License</h2>
   <p>This project is open-source under the <a href="LICENSE">MIT License</a>.</p>
 </body>
 </html>
