@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniBuddy - Feedback</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-green: #222217;
+            --olive-green: #4D5038;
+            --sage-green: #858666;
+            --beige: #D2CBC1;
+            --quiz-yellow: #F7E8C1;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--beige);
+            color: var(--dark-green);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Thin Navbar */
+        .navbar {
+            background: var(--dark-green) !important;
+            min-height: 38px;
+            padding-top: 0.1rem;
+            padding-bottom: 0.1rem;
+            box-shadow: none;
+            border-bottom: 1px solid var(--olive-green);
+        }
+        
+        .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--beige) !important;
+            letter-spacing: 1px;
+            padding-left: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-logo-bookicon {
+            font-size: 1.1rem;
+            color: var(--beige);
+            margin-right: 6px;
+            vertical-align: middle;
+            display: inline-block;
+            filter: drop-shadow(0 1px 2px rgba(34,34,23,0.12));
+        }
+        
+        .navbar-brand .logo-text {
+            color: var(--beige);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+        
+        .navbar-nav {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-link, .dropdown-toggle {
+            color: var(--beige) !important;
+            font-size: 0.85rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            padding: 0.2rem 0.55rem !important;
+            margin-right: 4px;
+            margin-left: 4px;
+            transition: font-weight 0.2s, box-shadow 0.2s;
+            border-radius: 4px;
+            background: none !important;
+        }
+        
+        .nav-link.active, .nav-link:hover, .dropdown-toggle:hover, .dropdown-item:hover {
+            color: var(--beige) !important;
+            font-weight: 700 !important;
+            box-shadow: 0 2px 8px rgba(210,203,193,0.25);
+            background: none !important;
+        }
+        
+        .dropdown-menu {
+            background: var(--dark-green);
+            border-radius: 6px;
+            min-width: 120px;
+            padding: 0.3rem 0;
+        }
+        
+        .dropdown-item {
+            color: var(--beige) !important;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            padding: 0.3rem 1rem;
+            transition: font-weight 0.2s, box-shadow 0.2s;
+        }
+        
+        .dropdown-item:hover {
+            font-weight: 700 !important;
+            background: var(--olive-green) !important;
+            box-shadow: 0 2px 8px rgba(210,203,193,0.25);
+        }
+        
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+        
+        @media (max-width: 900px) {
+            .navbar-nav {
+                margin-left: 0;
+            }
+            .nav-link, .dropdown-toggle {
+                padding: 0.2rem 0.4rem !important;
+                font-size: 0.82rem;
+                margin-right: 2px;
+                margin-left: 2px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .navbar-brand {
+                font-size: 1rem;
+            }
+            .nav-logo-bookicon {
+                font-size: 0.95rem;
+                margin-right: 4px;
+            }
+            .nav-link, .dropdown-toggle {
+                font-size: 0.78rem;
+                padding: 0.2rem 0.2rem !important;
+                margin-right: 1px;
+                margin-left: 1px;
+            }
+        }
+
+        /* Main Content */
+        .main-content {
+            width: 100%;
+            max-width: 1200px;
+            padding: 70px 20px 40px;
+            margin: 0 auto;
+        }
+        
+        .form-container {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 28px;
+            box-shadow: 0 4px 16px rgba(34,34,23,0.10);
+            margin-bottom: 2rem;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-green);
+        }
+        
+        h2 {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--olive-green);
+            padding-bottom: 10px;
+        }
+        
+        .form-label {
+            color: var(--dark-green);
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-control {
+            background-color: white;
+            border: 2px solid var(--olive-green);
+            color: var(--dark-green);
+            border-radius: 12px;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-control:focus {
+            background-color: white;
+            border-color: var(--sage-green);
+            box-shadow: 0 0 0 0.2rem rgba(77, 80, 56, 0.25);
+            color: var(--dark-green);
+        }
+        
+        .submit-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 30px;
+            background-color: var(--olive-green);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--sage-green);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(34,34,23,0.18);
+        }
+        
+        .success {
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 600;
+            color: var(--olive-green);
+            padding: 10px;
+            border-radius: 8px;
+            background-color: var(--quiz-yellow);
+        }
+        
+        .form-image {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-image img {
+            max-width: 200px;
+            height: auto;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-green);
+            color: var(--beige);
+            padding: 32px 0 16px 0;
+            width: 100%;
+            margin-top: auto;
+        }
+        
+        footer .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .footer-brand {
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-brand i {
+            font-size: 1.5rem;
+            color: var(--beige);
+            margin-right: 8px;
+        }
+        
+        .footer-brand span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--beige);
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .footer-links a {
+            color: var(--beige);
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: var(--quiz-yellow);
+        }
+        
+        .footer-contact {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--beige);
+            margin-top: 8px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 60px 15px 30px;
+            }
+            
+            .form-container {
+                padding: 1.5rem;
+            }
+            
+            footer .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid d-flex align-items-center">
+            <a class="navbar-brand" href="index.html">
+                <i class="bx bx-book nav-logo-bookicon"></i>
+                <span class="logo-text">UniBuddy</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="filter: invert(93%) sepia(6%) saturate(155%) hue-rotate(353deg) brightness(110%) contrast(92%);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="group-study.html">Study Tools</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="HabitTracker.html">HabitTracker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="timer.html">StudyChallenges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="reachUsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Reach Us
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="reachUsDropdown">
+                            <li><a class="dropdown-item active" href="feedback.html">Feedback Form</a></li>
+                            <li><a class="dropdown-item" href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="form-container">
+            <!-- Feedback Section -->
+            <section id="feedbackSection">
+                
+                <h2>Feedback Form</h2>
+                <p>We'd love to hear your thoughts about UniBuddy! Your feedback helps us improve the platform for all students.</p>
+                <form id="feedbackForm">
+                    <div class="mb-3">
+                        <label for="fbName" class="form-label">Name</label>
+                        <input id="fbName" type="text" class="form-control" placeholder="Your full name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fbEmail" class="form-label">Email</label>
+                        <input id="fbEmail" type="email" class="form-control" placeholder="you@example.com" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fbCategory" class="form-label">Feedback Category</label>
+                        <select id="fbCategory" class="form-control" required>
+                            <option value="">Select a category</option>
+                            <option value="suggestion">Feature Suggestion</option>
+                            <option value="bug">Bug Report</option>
+                            <option value="ui">User Interface</option>
+                            <option value="performance">Performance</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fbMsg" class="form-label">Message</label>
+                        <textarea id="fbMsg" class="form-control" rows="5" placeholder="Please share your feedback, suggestions, or issues..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Feedback</button>
+                </form>
+                <p class="success" id="fbOk"></p>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-brand">
+                <i class="bx bx-book"></i>
+                <span>UniBuddy</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="group-study.html">Study Tools</a>
+                <a href="HabitTracker.html">HabitTracker</a>
+                <a href="timer.html">Study Timer</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-contact">
+                Email: contact@unibuddy.com &nbsp;|&nbsp; Contact: +123-456-7890
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Form submission handler
+        document.getElementById('feedbackForm').addEventListener('submit', e => {
+            e.preventDefault();
+            document.getElementById('fbOk').textContent = '✅ Feedback submitted! Thank you for helping us improve UniBuddy.';
+            e.target.reset();
+            
+            // Clear success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('fbOk').textContent = '';
+            }, 5000);
+        });
+
+        // Make nav links bold and add shadow on hover
+        document.querySelectorAll('.nav-link, .dropdown-toggle, .dropdown-item').forEach(function (el) {
+            el.addEventListener('mouseenter', function () {
+                el.style.fontWeight = '700';
+                el.style.boxShadow = '0 2px 8px rgba(210,203,193,0.25)';
+            });
+            el.addEventListener('mouseleave', function () {
+                el.style.fontWeight = '';
+                el.style.boxShadow = '';
+            });
+        });
+    </script>
+</body>
+</html>
